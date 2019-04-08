@@ -7,6 +7,10 @@ const users = require("./routes/api/users");
 
 const app = express();
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -16,7 +20,7 @@ app.use(
 app.use(bodyParser.json());
 
 // DB Config
-const db = require("./config/keys").mongoURI;
+const db = process.env.MONGODB_URI || "mongodb://localhost/mernauth";
 
 // Connect to MongoDB
 mongoose
@@ -36,6 +40,8 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});
