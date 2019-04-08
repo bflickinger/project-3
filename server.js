@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 // DB Config
 const db = process.env.MONGODB_URI || "mongodb://localhost/mernauth";
 
-// Connect to MongoDB
+// Connect to MongoDB with conditions
 mongoose
   .connect(
     db,
