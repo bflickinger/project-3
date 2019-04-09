@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+import Navbar from "../layout/Navbar";
 
 class Login extends Component {
   constructor() {
@@ -53,7 +54,10 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
+      <div>
+      <Navbar location={this.props.location.pathname} history={this.props.history}/>
       <div className="container">
+      {console.log("login props ",this.props)}
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
@@ -120,6 +124,7 @@ class Login extends Component {
             </form>
           </div>
         </div>
+      </div>
       </div>
     );
   }

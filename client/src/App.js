@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 
@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
@@ -41,10 +40,10 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
-            <Route exact path="/" component={Login} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
+            {/* <Navbar /> */}
+            <Route exact path="/" component={Login}/>
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/register" component={Register}/>
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>

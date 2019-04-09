@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import Buttoncontrol from "./Buttoncontrol";
 
 class Navbar extends Component {
 
@@ -15,6 +16,8 @@ class Navbar extends Component {
     // const { user } = this.props.auth;
     return (
       <div className="navbar-fixed">
+      {console.log("navbar props",this.props)}
+      {console.log("navbar props from login",this.props.location)}
         <nav className="z-depth-0">
           <div className="nav-wrapper white">
             {/* <b>Hey there,</b> {user.name.split(" ")[0]} */}
@@ -28,19 +31,7 @@ class Navbar extends Component {
               <i className="material-icons">code</i>
               Hexapawn
             </Link>
-            {/* <button
-              style={{
-                // width: "150px",
-                borderRadius: "3px",
-                // letterSpacing: "1.5px",
-                marginTop: "5px",
-                marginRight: "5px"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3 right"
-            >
-              Logout
-            </button> */}
+            <Buttoncontrol location={this.props.location} history={this.props.history}/>
           </div>
         </nav>
       </div>
