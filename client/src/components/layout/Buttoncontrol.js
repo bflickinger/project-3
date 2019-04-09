@@ -65,8 +65,8 @@ class Buttoncontrol extends Component {
 
     render() {
         return (
-            <div>
-                {console.log("buttoncontrol props", this.props)}
+            <div className="right">
+                {/* {console.log("buttoncontrol props", this.props)} */}
                 <button
                     style={{
                         // width: "150px",

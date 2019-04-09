@@ -13,14 +13,16 @@ class Navbar extends Component {
   };
 
   render() {
-    // const { user } = this.props.auth;
+    const { user } = this.props.auth;
+    console.log("User? ", user);
     return (
       <div className="navbar-fixed">
-      {console.log("navbar props",this.props)}
-      {console.log("navbar props from login",this.props.location)}
+      {/* {console.log("navbar props",this.props)} */}
+      {/* {console.log("navbar props from login",this.props.location)} */}
         <nav className="z-depth-0">
           <div className="nav-wrapper white">
-            {/* <b>Hey there,</b> {user.name.split(" ")[0]} */}
+            {console.log("are we authenticated? ",this.props.auth.isAuthenticated)}
+            <b style={{color:"black",marginLeft: "5px"}}>{this.props.auth.isAuthenticated ? "Welcome, " + user.name.split(" ")[0]:null} </b>
             <Link
               to="/"
               style={{
