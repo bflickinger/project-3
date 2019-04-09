@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-class Dashboard extends Component {
+class Rightside extends Component {
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
@@ -14,14 +14,14 @@ class Dashboard extends Component {
         // const { user } = this.props.auth;
 
         return (
-                <div className="col s6">
-                    <h1 style={{color:"white",textAlign:"center"}}>RIGHT</h1>
+                <div className="col s6 grey">
+                    <h1 style={{color:"white",textAlign:"center", minHeight:"75vh"}}>RIGHT</h1>
                 </div>
         );
     }
 }
 
-Dashboard.propTypes = {
+Rightside.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
@@ -33,4 +33,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { logoutUser }
-)(Dashboard);
+)(Rightside);

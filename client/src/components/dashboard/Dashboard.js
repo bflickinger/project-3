@@ -5,7 +5,6 @@ import { logoutUser } from "../../actions/authActions";
 import Navbar from "../layout/Navbar";
 import Leftside from "../game/leftside";
 import Rightside from "../game/rightside";
-import leftside from "../game/leftside";
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -20,34 +19,12 @@ class Dashboard extends Component {
       <div>
         <Navbar location={this.props.location.pathname} history={this.props.history} />
         <div>
-          <div style={{ height: "35vh" }} className="container valign-wrapper">
-            <div className="row">
-              <div className="landing-copy col s12 center-align">
-                {/* <h4>
-                  <b>Hey there,</b> {user.name.split(" ")[0]}
-                  <p className="flow-text grey-text text-darken-1">
-                    You are logged in!
-                  </p>
-                </h4> */}
-                {/* <button
-                  style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem"
-                  }}
-                  onClick={this.onLogoutClick}
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                >
-                  Logout
-                </button> */}
-              </div>
-            </div>
-          </div>
         </div>
-        <div className="row">
-        <Leftside />
-        <Rightside />
+        <div className="container" style={{width:"100%",minHeight:"75vh"}}>
+          <div className="row" style={{minHeight:"75vh"}}>
+            <Leftside />
+            <Rightside />
+          </div>
         </div>
       </div>
     );

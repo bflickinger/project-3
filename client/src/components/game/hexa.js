@@ -24,6 +24,7 @@ function getPossibles() {
     console.log(`getPossiblities result ->`, pos);
     return pos;
 }
+
 function computerMoves() {
     let brd = getBoard(), mvs, needSave = false;
     for (let i = 0; i < memory.length; i++) {
@@ -54,6 +55,7 @@ function computerMoves() {
     updateBtns();
     return -1;
 }
+
 function getBoard() {
     let str = "";
     for (let j = 0; j < 3; j++) {
@@ -64,9 +66,11 @@ function getBoard() {
     console.log(`getBoard result->`, str);
     return str;
 }
+
 function updateScore() {
     score.innerHTML = "Player: " + win.p + " Computer: " + win.c;
 }
+
 function finish(r) {
     let str = "The Computer wins!";
     if (r == 0) {
@@ -87,6 +91,7 @@ function finish(r) {
     playBtn.className = "button long"
     updateScore();
 }
+
 function checkFinished() {
     if (getPossibles().length < 1) return turn == 0 ? 1 : 0;
 
@@ -109,6 +114,7 @@ function checkFinished() {
     //Not finished
     return -1;
 }
+
 function nextPlayer() {
     let r;
     updateBtns();
@@ -125,12 +131,14 @@ function nextPlayer() {
         }
     }
 }
+
 function search(o, arr) {
     for (let i = 0; i < arr.length; i++) {
         if (o.f == arr[i].f && o.t == arr[i].t) return i;
     }
     return -1;
 }
+
 function btnHandle(e) {
     if (turn > 0) return;
     let ti = e.target.i, tj = e.target.j;
@@ -156,6 +164,7 @@ function btnHandle(e) {
         }
     }
 }
+
 //Draws the pieces on the board
 function updateBtns() {
     let b, v;
@@ -166,12 +175,14 @@ function updateBtns() {
         }
     }
 }
+
 function restart() {
     turn = 0;
     createBoard();
     updateBtns();
     playBtn.className += " hide";
 }
+
 //creates the virtual board array
 function createBoard() {
     board = new Array(3);
@@ -184,8 +195,8 @@ function createBoard() {
         }
     }
     // console.log(`createBoard results ->`, board);
-
 }
+
 function createBtns() {
     let b, d = document.createElement("div"), v = false;
     d.className += "board";
@@ -212,6 +223,7 @@ function createBtns() {
     d.appendChild(playBtn);
     updateScore();
 }
+
 function init() {
     createBtns();
     restart();

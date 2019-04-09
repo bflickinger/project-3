@@ -2,9 +2,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  padding-top: 6vh;
+  /* padding-top: 6vh; */
   background: #222;
-  color: #111
+  /* background: grey; */
+  color: #111;
+  /* min-height: 80vh; */
 }
 
 .txt {
