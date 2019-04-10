@@ -1,3 +1,4 @@
+import leftside from "./leftside";
 
 export let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }, win = { c: 0, p: 0 }, score;
@@ -21,7 +22,7 @@ export function getPossibles() {
             }
         }
     }
-    console.log(`getPossiblities result ->`, pos);
+    // console.log(`getPossiblities result ->`, pos);
     return pos;
 }
 
@@ -49,7 +50,7 @@ export function computerMoves() {
 
     if (needSave) {
         memory.push({ board: brd, moves: mvs });
-        console.log("Memory Saved ->", memory);
+        // console.log("Memory Saved ->", memory);
 
     }
     updateBtns();
@@ -63,7 +64,7 @@ export function getBoard() {
             str += board[i][j];
         }
     }
-    console.log(`getBoard result->`, str);
+    // console.log(`getBoard result->`, str);
     return str;
 }
 
@@ -79,14 +80,15 @@ export function finish(r) {
         for (let i = 0; i < memory.length; i++) {
             if (memory[i].board === lastMove.brd) {
                 memory[i].moves.splice(lastMove.mvi, 1);
-                console.log("Player wins, lastmove.mvi ->", lastMove.mvi);
-                console.log("Player win memory ->", memory);
+                // console.log("Player wins, lastmove.mvi ->", lastMove.mvi);
+                // console.log("Player win memory ->", memory);
                 break;
             }
         }
     } else {
         win.c++;
     }
+    
     playBtn.innerHTML = str + "<br />Click to play.";
     playBtn.className = "button long"
     updateScore();
@@ -177,7 +179,7 @@ export function updateBtns() {
 }
 
 export function restart() {
-    console.log("restart has been called");
+    // console.log("restart has been called");
     turn = 0;
     createBoard();
     updateBtns();
@@ -199,10 +201,11 @@ export function createBoard() {
 }
 
 export function createBtns() {
-    console.log('createBtns has been called');
-    let b, d = document.createElement("div"), v = false, x = document.getElementsByClassName("hexa");
+    // console.log('createBtns has been called');
+    let b, d = document.createElement("div"), v = false, x = document.getElementById("hexa");
+    // console.log("hexa :",x);
     d.className += "board";
-    document.body.appendChild(d);
+    x.appendChild(d);
     for (let j = 0; j < 3; j++) {
         for (let i = 0; i < 3; i++) {
             b = document.createElement("button");

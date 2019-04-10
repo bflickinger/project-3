@@ -38,25 +38,25 @@ class Buttoncontrol extends Component {
                 this.setState({
                     btntext: "Register"
                 });
-                console.log("switch /");
+                // console.log("/");
                 break;
             case "/login":
                 this.setState({
                     btntext: "Register"
                 });
-                console.log("/login");
+                // console.log("/login");
                 break;
             case "/register":
                 this.setState({
                     btntext: "Login"
                 });
-                console.log("/register");
+                // console.log("/register");
                 break;
             case "/dashboard":
                 this.setState({
                     btntext: "Logout"
                 });
-                console.log("/dashboard");
+                // console.log("/dashboard");
                 break;
             default:
                 return;

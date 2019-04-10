@@ -14,8 +14,8 @@ class Rightside extends Component {
         // const { user } = this.props.auth;
 
         return (
-                <div className="col s6 grey">
-                    <h1 style={{color:"white",textAlign:"center", minHeight:"75vh"}}>RIGHT</h1>
+                <div className="col s6 grey" style={{minHeight:"88vh"}}>
+                    {/* <h1 style={{color:"white",textAlign:"center", minHeight:"75vh"}}>RIGHT</h1> */}
                 </div>
         );
     }
