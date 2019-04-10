@@ -1,9 +1,9 @@
 
-export let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
+let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }, win = { c: 0, p: 0 }, score;
 
 
-export function getPossibles() {
+function getPossibles() {
     let pos = [], tp = turn === 0 ? "W" : "B", gp = turn === 0 ? "B" : "W";
 
     for (let j = 0; j < 3; j++) {
@@ -25,7 +25,7 @@ export function getPossibles() {
     return pos;
 }
 
-export function computerMoves() {
+function computerMoves() {
     let brd = getBoard(), mvs, needSave = false;
     for (let i = 0; i < memory.length; i++) {
         if (memory[i].board === brd) {
@@ -56,7 +56,7 @@ export function computerMoves() {
     return -1;
 }
 
-export function getBoard() {
+function getBoard() {
     let str = "";
     for (let j = 0; j < 3; j++) {
         for (let i = 0; i < 3; i++) {
@@ -67,11 +67,11 @@ export function getBoard() {
     return str;
 }
 
-export function updateScore() {
+function updateScore() {
     score.innerHTML = "Player: " + win.p + " Computer: " + win.c;
 }
 
-export function finish(r) {
+function finish(r) {
     let str = "The Computer wins!";
     if (r === 0) {
         str = "You win!";
@@ -92,7 +92,7 @@ export function finish(r) {
     updateScore();
 }
 
-export function checkFinished() {
+function checkFinished() {
     if (getPossibles().length < 1) return turn === 0 ? 1 : 0;
 
     //Checks to see if either color has made it to the opposite side of the board
@@ -115,7 +115,7 @@ export function checkFinished() {
     return -1;
 }
 
-export function nextPlayer() {
+function nextPlayer() {
     let r;
     updateBtns();
     turn = turn === 0 ? 1 : 0;
@@ -132,14 +132,14 @@ export function nextPlayer() {
     }
 }
 
-export function search(o, arr) {
+function search(o, arr) {
     for (let i = 0; i < arr.length; i++) {
         if (o.f === arr[i].f && o.t === arr[i].t) return i;
     }
     return -1;
 }
 
-export function btnHandle(e) {
+function btnHandle(e) {
     if (turn > 0) return;
     let ti = e.target.i, tj = e.target.j;
 
@@ -166,7 +166,7 @@ export function btnHandle(e) {
 }
 
 //Draws the pieces on the board
-export function updateBtns() {
+function updateBtns() {
     let b;
     for (let j = 0; j < 3; j++) {
         for (let i = 0; i < 3; i++) {
@@ -176,8 +176,7 @@ export function updateBtns() {
     }
 }
 
-export function restart() {
-    console.log("restart has been called");
+function restart() {
     turn = 0;
     createBoard();
     updateBtns();
@@ -185,7 +184,7 @@ export function restart() {
 }
 
 //creates the virtual board array
-export function createBoard() {
+function createBoard() {
     board = new Array(3);
     for (let i = 0; i < 3; i++) {
         board[i] = new Array(3);
@@ -198,9 +197,8 @@ export function createBoard() {
     // console.log(`createBoard results ->`, board);
 }
 
-export function createBtns() {
-    console.log('createBtns has been called');
-    let b, d = document.createElement("div"), v = false, x = document.getElementsByClassName("hexa");
+function createBtns() {
+    let b, d = document.createElement("div"), v = false;
     d.className += "board";
     document.body.appendChild(d);
     for (let j = 0; j < 3; j++) {
@@ -226,3 +224,7 @@ export function createBtns() {
     updateScore();
 }
 
+// function init() {
+//     createBtns();
+//     restart();
+// }

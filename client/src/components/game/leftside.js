@@ -2,24 +2,30 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import * as hexa from "./hexa.js";
+import * as Hexa from "./hexa";
 
 class Leftside extends Component {
-    onLogoutClick = e => {
-        e.preventDefault();
-        this.props.logoutUser();
-    };
+    // state = {
+    //     board: [[],[]],
+    //     playBtn: "",
+    //     memory: [],
+    //     lastMove: { brd: "", mvi: 0 },
+    //     clicks: { first: null, second: null },
+    //     win: { c: 0, p: 0 },
+    //     score: ""
+    // }
 
     componentDidMount = mp => {
-        
-    }
+        Hexa.createBtns();
+        Hexa.restart();
+    };
 
     render() {
 
         // const { user } = this.props.auth;
         return (
-            <div className="col s6 blue">
-                <h1 style={{ color: "white", textAlign:"center", minHeight:"75vh"}}>LEFT</h1>
+            <div id="hexa" className="col s6 blue">
+                <h1 style={{ color: "white", textAlign: "center", minHeight: "75vh" }}>LEFT</h1>
             </div>
         );
     }
