@@ -65,18 +65,13 @@ class Buttoncontrol extends Component {
 
     render() {
         return (
-            <div className="right">
-                {/* {console.log("buttoncontrol props", this.props)} */}
+            <div className="right" style={{marginRight: "10px"}}>
                 <button
                     style={{
-                        // width: "150px",
-                        borderRadius: "3px",
-                        // letterSpacing: "1.5px",
-                        marginTop: "5px",
-                        marginRight: "5px"
+                        borderRadius: "3px"
                     }}
                     onClick={this.buttonClick}
-                    className="btn btn-large waves-effect waves-light hoverable blue accent-3 right"
+                    className="btn btn-small waves-effect waves-light hoverable blue accent-3"
                 >
                     {this.state.btntext}
                 </button>

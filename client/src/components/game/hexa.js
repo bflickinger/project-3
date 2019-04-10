@@ -1,5 +1,3 @@
-import leftside from "./leftside";
-
 export let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }, win = { c: 0, p: 0 }, score;
 
@@ -201,7 +199,6 @@ export function createBoard() {
 }
 
 export function createBtns() {
-    // console.log('createBtns has been called');
     let b, d = document.createElement("div"), v = false, x = document.getElementById("hexa");
     // console.log("hexa :",x);
     d.className += "board";
