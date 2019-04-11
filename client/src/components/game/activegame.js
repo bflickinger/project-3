@@ -7,62 +7,113 @@ import * as Hexa from "./hexa";
 class Activegame extends Component {
     state = {
         board: [],
-        playBtn: "",
+        isHidden: true,
         turn: "",
         memory: [],
-        lastMove: { brd: "", mvi: 0},
-        clicks : {first: null, second: null},
+        lastMove: { brd: "", mvi: 0 },
+        clicks: { first: null, second: null },
         win: { c: 0, p: 0 },
         score: ""
     }
 
-componentDidMount = () => {
-    this.createBtns();
-    this.restart();
-    // console.log("didmount memory",Hexa.memory);
-};
+    componentDidMount = () => {
+        // Hexa.createBtns();
+        this.restart();
+        // console.log("didmount memory",Hexa.memory);
+    };
 
-createBtns = () => {
-    // console.log('createBtns has been called');
-    let b, d = document.createElement("div"), x = document.getElementById("hexa"), v = false, tempPlayBtn = "", tempScore = "";
-    // console.log("hexa :",x);
-    d.className += "board";
-    x.appendChild(d);
-    for (let j = 0; j < 3; j++) {
+    toggleHidden = () => {
+        this.setState({
+            isHidden: !this.state.isHidden
+        });
+    };
+
+    restart = () => {
+        let tempturn = 0;
+        this.setState({
+            turn: tempturn
+        });
+        this.createBoard();
+        // Hexa.updateBtns();
+    };
+
+    createBoard = () => {
+        let tempboard = new Array(3);
         for (let i = 0; i < 3; i++) {
-            b = document.createElement("button");
-            b.id = "btn" + (i + j * 3);
-            b.i = i; b.j = j;
-            // b.addEventListener("click", btnHandle, false);
-            b.appendChild(document.createTextNode(""));
-            d.appendChild(b);
-            if (v) b.className = "button"
-            else b.className = "empty";
-            v = !v;
+            tempboard[i] = new Array(3);
         }
+        for (let j = 0; j < 3; j++) {
+            for (let i = 0; i < 3; i++) {
+                tempboard[i][j] = j === 0 ? "B" : j === 2 ? "W" : " ";
+            }
+        }
+        // console.log(`createBoard results ->`, tempboard);
+        this.setState({
+            board: tempboard
+        });
+    };
+
+    updateBtns = () => {
+        let b, tempboard;
+        for (let j = 0; j < 3; j++) {
+            for (let i = 0; i < 3; i++) {
+                b = document.getElementById("btn" + (i + j * 3));
+                b.innerHTML = tempboard[i][j] === "B" ? "&#x265F;" : tempboard[i][j] === "W" ? "&#x2659;" : " ";
+            }
+        }
+        this.setState({
+            board: tempboard
+        });
+    };
+
+    btnHandle = (e) => {
+        console.log("from click: ", e);
+        // if (this.state.turn > 0) return;
+        // let ti = e.target.i, tj = e.target.j;
+    
+        // if (clicks.first === null && board[ti][tj] === "W") {
+        //     clicks.first = e.target;
+        //     clicks.first.className += " marked"
+        // } else if (clicks.first !== null && board[ti][tj] === "W") {
+        //     clicks.first.className = clicks.first.className.split(" ")[0];
+        //     clicks.first = clicks.second = null;
+        // } else if (clicks.first !== null && (board[ti][tj] === " " ||
+        //     board[ti][tj] === "B")) {
+        //     clicks.second = e.target;
+        //     let moves = getPossibles(turn),
+        //         i = clicks.first.i, ii = clicks.second.i,
+        //         j = clicks.first.j, jj = clicks.second.j,
+        //         obj = { f: i + j * 3, t: ii + jj * 3 };
+        //     if (search(obj, moves) > -1) {
+        //         board[i][j] = " "; board[ii][jj] = "W";
+        //         clicks.first.className = clicks.first.className.split(" ")[0];
+        //         clicks.first = clicks.second = null;
+        //         nextPlayer();
+        //     }
+        // }
+    };
+
+    render() {
+        // const { user } = this.props.auth;
+        return (
+            <div id="hexa" className="col s6 blue" style={{ minHeight: "88vh", paddingTop: "50px" }}>
+                <div className="board">
+                    <button onClick={this.btnHandle.bind()} id="btn0" className="empty">♟</button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn1" className="button">♟</button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn2" className="empty">♟</button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn3" className="button"> </button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn4" className="empty"> </button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn5" className="button"> </button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn6" className="empty">♙</button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn7" className="button">♙</button>
+                    <button onClick={this.btnHandle.bind(this)} id="btn8" className="empty">♙</button>
+                    <p className="txt">Player: {this.state.win.p} Computer: {this.state.win.p}</p>
+                    {!this.state.isHidden && <button onClick={this.toggleHidden.bind(this)} className="button long"></button>}
+                    {/* {console.log("State of: board", this.state.board)} */}
+                </div>
+            </div>
+        );
     }
-    tempPlayBtn = document.createElement("button");
-    tempPlayBtn.className = "button long hide";
-    tempPlayBtn.addEventListener("click", this.restart, false);
-    tempScore = document.createElement("p");
-    tempScore.className = "txt";
-    d.appendChild(tempScore);
-    d.appendChild(tempPlayBtn);
-    // updateScore();
-};
-
-restart = () => {
-
-};
-
-render() {
-    // const { user } = this.props.auth;
-    return (
-        <div id="hexa" className="col s6 blue" style={{ minHeight: "88vh", paddingTop: "50px" }}>
-            {/* <h1 style={{ color: "white", textAlign: "center", minHeight: "75vh" }}>LEFT</h1> */}
-        </div>
-    );
-}
 }
 
 Activegame.propTypes = {

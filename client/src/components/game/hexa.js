@@ -165,7 +165,7 @@ export function btnHandle(e) {
     }
 }
 
-//Draws the pieces on the board
+//Draws the pieces using 'board' variable on the board
 export function updateBtns() {
     let b;
     for (let j = 0; j < 3; j++) {
@@ -184,7 +184,7 @@ export function restart() {
     playBtn.className += " hide";
 }
 
-//creates the virtual board array
+//Populates the board variable with pieces
 export function createBoard() {
     board = new Array(3);
     for (let i = 0; i < 3; i++) {
@@ -198,6 +198,7 @@ export function createBoard() {
     // console.log(`createBoard results ->`, board);
 }
 
+//creates the 3x3 board on the screen using buttons
 export function createBtns() {
     let b, d = document.createElement("div"), v = false, x = document.getElementById("hexa");
     // console.log("hexa :",x);
