@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Activegame from "./activegame";
+import './style.css';
 
 class Leftside extends Component {
  
