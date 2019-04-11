@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Activegame from "./activegame";
-import Game from './game';
+// import Game from './game';
 
 class Leftside extends Component {
  
@@ -14,7 +14,7 @@ class Leftside extends Component {
     render() {
         // const { user } = this.props.auth;
         return (
-            <Game />
+            <Activegame />
         );
     }
 }

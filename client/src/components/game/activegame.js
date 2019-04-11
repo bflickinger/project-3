@@ -17,8 +17,9 @@ class Activegame extends Component {
     }
 
     componentDidMount = () => {
-        // Hexa.createBtns();
-        this.restart();
+        Hexa.createBtns();
+        Hexa.restart();
+        // this.restart();
         // console.log("didmount memory",Hexa.memory);
     };
 
@@ -97,20 +98,7 @@ class Activegame extends Component {
         // const { user } = this.props.auth;
         return (
             <div id="hexa" className="col s6 blue" style={{ minHeight: "88vh", paddingTop: "50px" }}>
-                <div className="board">
-                    <button onClick={this.btnHandle.bind()} id="btn0" className="empty">♟</button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn1" className="button">♟</button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn2" className="empty">♟</button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn3" className="button"> </button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn4" className="empty"> </button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn5" className="button"> </button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn6" className="empty">♙</button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn7" className="button">♙</button>
-                    <button onClick={this.btnHandle.bind(this)} id="btn8" className="empty">♙</button>
-                    <p className="txt">Player: {this.state.win.p} Computer: {this.state.win.p}</p>
-                    {!this.state.isHidden && <button onClick={this.toggleHidden.bind(this)} className="button long"></button>}
-                    {/* {console.log("State of: board", this.state.board)} */}
-                </div>
+       
             </div>
         );
     }
