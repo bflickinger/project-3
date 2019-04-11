@@ -21,13 +21,12 @@ class Navbar extends Component {
         <nav>
           <div className="nav-wrapper white">
             {console.log("are we authenticated? ",this.props.auth.isAuthenticated)}
-            <b style={{color:"black",marginLeft: "5px"}}>{this.props.auth.isAuthenticated ? "Welcome, " + user.name.split(" ")[0]:null} </b>
+            <div id="name" style={{color:"black",marginLeft: "5px"}}>{this.props.auth.isAuthenticated ? "Welcome, " + user.name.split(" ")[0]:null} </div>
             <Link
               to="/"
 
               className="col s5 brand-logo center black-text"
             >
-              <i className="material-icons">code</i>
               Hexapawn
             </Link>
             <Buttoncontrol location={this.props.location} history={this.props.history}/>
