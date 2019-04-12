@@ -83,6 +83,7 @@ class Activegame extends Component {
             this.setState({
                 memory: newMemoryState
             });
+            console.log("Memory State ->",this.state.memory);
         }
         this.updateBtns();
         return -1;
@@ -132,13 +133,13 @@ class Activegame extends Component {
                 {
                 c: win.c
             }));
-            // console.log(this.state.win);
         }
         playBtn.innerHTML = str + "<br />Click to play.";
         playBtn.className = "button long"
         // this.setState ({
         //     playBtn: tempplayBtn
         // });
+        console.log(this.state.win);
         this.updateScore();
     }
     
