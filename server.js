@@ -20,7 +20,7 @@ app.use(
 app.use(bodyParser.json());
 
 // DB Config
-const db = process.env.MONGODB_URI || "mongodb://localhost/mernauth";
+const db = process.env.MONGODB_URI || "mongodb://localhost/hexapawn";
 
 // Connect to MongoDB with conditions
 mongoose

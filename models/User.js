@@ -18,7 +18,21 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  computer: {
+    type: Number,
+    default: 0
+  },
+  player: {
+    type: Number,
+    default: 0
+  },
+  memory: [{
+    board: String,
+    },[{
+      f: Number,
+      t: Number
+    }]],
 });
 
 module.exports = User = mongoose.model("users", UserSchema);

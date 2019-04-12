@@ -41,5 +41,9 @@
     font-family: "fader";
     src: url("fader.ttf");
     }
+
+.txt {
+   font-size: 16px;
+}
     
     

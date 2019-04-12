@@ -11,26 +11,15 @@ let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
 
 class Activegame extends Component {
     state = {
-        // board: [],
-        // isHidden: true,
-        // turn: "",
         memory: [],
-        // lastMove: { brd: "", mvi: 0 },
-        // clicks: { first: null, second: null },
-        win: { c: 0, p: 0 },
-        // score: ""
+        computer: 0,
+        player: 0,
     }
 
     componentDidMount = () => {
         this.createBtns();
         this.restart();
     };
-
-    // toggleHidden = () => {
-    //     this.setState({
-    //         isHidden: !isHidden
-    //     });
-    // };
 
     getPossibles = () => {
         let pos = [], tp = turn === 0 ? "W" : "B", gp = turn === 0 ? "B" : "W";
@@ -62,7 +51,6 @@ class Activegame extends Component {
                 break;
             }
         }
-    
         if (!mvs) {
             mvs = this.getPossibles();
             needSave = true;
@@ -75,9 +63,6 @@ class Activegame extends Component {
         let i = mvs[idx].f % 3, j = Math.floor(mvs[idx].f / 3),
             ii = mvs[idx].t % 3, jj = Math.floor(mvs[idx].t / 3);
         board[i][j] = " "; board[ii][jj] = "B";
-        // this.setState ({
-        //     board: tempboard
-        // });    
         if (needSave) {
             memory.push({ board: brd, moves: mvs });
             let newMemoryState = this.state.memory.slice();
@@ -85,7 +70,6 @@ class Activegame extends Component {
             this.setState({
                 memory: newMemoryState
             });
-            // console.log("Memory State ->",this.state.memory);
         }
         this.updateBtns();
         return -1;
@@ -98,16 +82,7 @@ class Activegame extends Component {
                 str += board[i][j];
             }
         }
-        // console.log(`getBoard result->`, str);
         return str;
-    }
-    
-    updateScore = () => {
-        // let tempscore = score;
-        score.innerHTML = "Player: " + win.p + " Computer: " + win.c;
-        // this.setState ({
-        //     score: tempscore
-        // });
     }
     
     finish = (r) => {
@@ -115,13 +90,10 @@ class Activegame extends Component {
         if (r === 0) {
             str = "You win!";
             win.p++;
-            // this.setState(Object.assign(this.state.jasper,{name:'someOtherName'}));
-            this.setState (Object.assign(
-                this.state.win,
-                {
-                p: win.p
-            }));
-            // console.log(this.state.win);
+            this.setState ({
+                player: win.p
+            });
+            // console.log(this.state.player);
             for (let i = 0; i < memory.length; i++) {
                 if (memory[i].board === lastMove.brd) {
                     memory[i].moves.splice(lastMove.mvi, 1);
@@ -130,18 +102,12 @@ class Activegame extends Component {
             }
         } else {
             win.c++;
-            this.setState (Object.assign(
-                this.state.win,
-                {
-                c: win.c
-            }));
+            this.setState ({
+                computer: win.c
+            });
         }
         playBtn.innerHTML = str + "<br />Click to play.";
         playBtn.className = "button long"
-        // this.setState ({
-        //     playBtn: tempplayBtn
-        // });
-        this.updateScore();
     }
     
     checkFinished = () => {
@@ -171,9 +137,6 @@ class Activegame extends Component {
         let r;
         this.updateBtns();
         turn = turn === 0 ? 1 : 0;
-        // this.setState ({
-        //     turn: tempturn
-        // });
         r = this.checkFinished();
     
         if (r > -1) {
@@ -195,25 +158,18 @@ class Activegame extends Component {
     }
     
     btnHandle = (e) => {
-        // console.log("from click: ", e);
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
     
         if (clicks.first === null && board[ti][tj] === "W") {
             clicks.first = e.target;
             clicks.first.className += " marked"
-            // this.setState ({
-            //     clicks: tempclicks
-            // });
         } else if (clicks.first !== null && board[ti][tj] === "W") {
             clicks.first.className = clicks.first.className.split(" ")[0];
             clicks.first = clicks.second = null;
         } else if (clicks.first !== null && (board[ti][tj] === " " ||
             board[ti][tj] === "B")) {
             clicks.second = e.target;
-            // this.setState ({
-            //     clicks: tempclicks
-            // });
             let moves = this.getPossibles(turn),
                 i = clicks.first.i, ii = clicks.second.i,
                 j = clicks.first.j, jj = clicks.second.j,
@@ -222,10 +178,6 @@ class Activegame extends Component {
                 board[i][j] = " "; board[ii][jj] = "W";
                 clicks.first.className = clicks.first.className.split(" ")[0];
                 clicks.first = clicks.second = null;
-                // this.setState ({
-                //     board: tempboard,
-                //     clicks: tempclicks
-                // });
                 this.nextPlayer();
             }
         }
@@ -236,21 +188,14 @@ class Activegame extends Component {
         for (let j = 0; j < 3; j++) {
             for (let i = 0; i < 3; i++) {
                 b = document.getElementById("btn" + (i + j * 3));
-                // console.log('updateBtns B: ', b);
                 b.innerHTML = board[i][j] === "B" ? "&#x265F;" : board[i][j] === "W" ? "&#x2659;" : " ";
             }
         }
-        // this.setState({
-        //     board: tempboard
-        // });
     };
 
 
     restart = () => {
         turn = 0;
-        // this.setState({
-        //     turn: tempturn
-        // });
         this.createBoard();
         this.updateBtns();
         playBtn.className += " hide";
@@ -266,16 +211,10 @@ class Activegame extends Component {
                 board[i][j] = j === 0 ? "B" : j === 2 ? "W" : " ";
             }
         }
-        // console.log("tempboard results ->", tempboard);
-        // this.setState({
-        //     board: tempboard
-        // });
-        // console.log("let board -> ", board);
     };
 
     createBtns = () => {
         let b, d = document.createElement("div"), v = false, x = document.getElementById("hexa");
-        // console.log("hexa :",x);
         d.className += "board";
         x.appendChild(d);
         for (let j = 0; j < 3; j++) {
@@ -294,25 +233,14 @@ class Activegame extends Component {
         playBtn = document.createElement("button");
         playBtn.className = "button long hide";
         playBtn.addEventListener("click", this.restart, false);
-        score = document.createElement("p");
-        score.className = "txt";
-        // this.setState ({
-        //     playBtn: tempplayBtn,
-        //     score: tempscore
-        // });
-        // console.log(playBtn);
-        // console.log(score);
-        d.appendChild(score);
         d.appendChild(playBtn);
-        this.updateScore();
     }
 
     render() {
-        // const { user } = this.props.auth;
         return (
             <div>
-                {console.log("State.win from Activegame: ",this.state.win)}
-                < Scoreboard score={this.state.win}/>
+                {console.log("this.state.memory ",this.state.memory)}
+                < Scoreboard player={this.state.player} computer={this.state.computer}/>
                 <div id="hexa">
                 </div>
             </div>
