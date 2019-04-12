@@ -15,12 +15,12 @@ class Navbar extends Component {
 
   render() {
     const { user } = this.props.auth;
-    console.log("User? ", user);
+    // console.log("User? ", user);
     return (
       <div className="navbar-fixed">
         <nav>
           <div className="nav-wrapper white">
-            {console.log("are we authenticated? ",this.props.auth.isAuthenticated)}
+            {/* {console.log("are we authenticated? ",this.props.auth.isAuthenticated)} */}
             <nav-item id="logged-name">{this.props.auth.isAuthenticated ? "Welcome, " + user.name.split(" ")[0]:null} </nav-item>
             <Link
               to="/"

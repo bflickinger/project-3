@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import Scoreboard from "./scoreboard";
 import "./style.css";
+
 
 let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }, win = { c: 0, p: 0 }, score;
@@ -83,7 +85,7 @@ class Activegame extends Component {
             this.setState({
                 memory: newMemoryState
             });
-            console.log("Memory State ->",this.state.memory);
+            // console.log("Memory State ->",this.state.memory);
         }
         this.updateBtns();
         return -1;
@@ -139,7 +141,6 @@ class Activegame extends Component {
         // this.setState ({
         //     playBtn: tempplayBtn
         // });
-        console.log(this.state.win);
         this.updateScore();
     }
     
@@ -309,7 +310,12 @@ class Activegame extends Component {
     render() {
         // const { user } = this.props.auth;
         return (
-            <div id="hexa"></div>
+            <div>
+                {console.log("State.win from Activegame: ",this.state.win)}
+                < Scoreboard score={this.state.win}/>
+                <div id="hexa">
+                </div>
+            </div>
         );
     }
 }

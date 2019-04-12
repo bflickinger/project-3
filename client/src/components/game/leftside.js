@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Activegame from "./activegame";
 import "./style.css";
-import Scoreboard from "./scoreboard";
+// import Scoreboard from "./scoreboard";
 
 class Leftside extends Component {
  
@@ -16,8 +16,9 @@ class Leftside extends Component {
         // const { user } = this.props.auth;
         return (
             <div id="leftside-col" className="col s6">
-                <Scoreboard />
+                {/* <Scoreboard /> */}
                 <Activegame />
+                {/* {console.log("State from leftside: ",this.state.win)} */}
            </div>
         );
     }
