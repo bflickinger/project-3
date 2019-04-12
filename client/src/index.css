@@ -13,18 +13,18 @@ body {
   background-attachment: fixed;
   background-color: black;
   background-size: cover;
+  overflow: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-.row {
+/* .row {
   background-image: url(blackpawn.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: black;
   background-size: cover;
-}
+} */

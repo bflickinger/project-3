@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Activegame from "./activegame";
-// import Game from './game';
+import "./style.css";
+import Scoreboard from "./scoreboard";
 
 class Leftside extends Component {
  
@@ -14,7 +15,10 @@ class Leftside extends Component {
     render() {
         // const { user } = this.props.auth;
         return (
-            <Activegame />
+            <div id="leftside-col" className="col s6">
+                <Scoreboard />
+                <Activegame />
+           </div>
         );
     }
 }

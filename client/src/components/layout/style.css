@@ -2,6 +2,7 @@
     border-top: 2px solid lightblue;
 }
 
-#name {
-    
+#logged-name {
+    color:black;
+    margin-left: 10px;
 }

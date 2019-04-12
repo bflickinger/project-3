@@ -56,7 +56,6 @@ class Login extends Component {
       <div>
       <Navbar location={this.props.location.pathname} history={this.props.history}/>
       <div className="container">
-      {/* {console.log("login props ",this.props)} */}
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>

@@ -5,6 +5,7 @@ import { logoutUser } from "../../actions/authActions";
 import Navbar from "../layout/Navbar";
 import Leftside from "../game/leftside";
 import Rightside from "../game/rightside";
+import "./style.css";
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -17,16 +18,14 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <Navbar location={this.props.location.pathname} history={this.props.history} />
-        <div>
-        </div>
-        <div className="container" style={{width:"100%",minHeight:"75vh"}}>
-          <div className="row" style={{minHeight:"75vh"}}>
-            <Leftside />
-            <Rightside />
-          </div>
-        </div>
-      </div>
+       <Navbar location={this.props.location.pathname} history={this.props.history} />
+       <div className="container-fluid">
+         <div className="row" id="main-row">
+           <Leftside />
+           <Rightside />
+         </div>
+       </div>
+     </div>
     );
   }
 }

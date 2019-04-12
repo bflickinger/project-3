@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-// import * as Hexa from "./hexa";
+import "./style.css";
 
 let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }, win = { c: 0, p: 0 }, score;
@@ -309,8 +309,7 @@ class Activegame extends Component {
     render() {
         // const { user } = this.props.auth;
         return (
-            <div id="hexa" className="col s6 blue" style={{ minHeight: "88vh", paddingTop: "50px" }}>
-            </div>
+            <div id="hexa"></div>
         );
     }
 }

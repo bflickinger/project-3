@@ -21,7 +21,7 @@ class Navbar extends Component {
         <nav>
           <div className="nav-wrapper white">
             {console.log("are we authenticated? ",this.props.auth.isAuthenticated)}
-            <nav-item id="name"  style={{color:"black",marginLeft: "5px"}}>{this.props.auth.isAuthenticated ? "Welcome, " + user.name.split(" ")[0]:null} </nav-item>
+            <nav-item id="logged-name">{this.props.auth.isAuthenticated ? "Welcome, " + user.name.split(" ")[0]:null} </nav-item>
             <Link
               to="/"
 
