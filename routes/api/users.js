@@ -80,7 +80,10 @@ router.post("/login", (req, res) => {
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          memory: user.memory,
+          computer: user.computer,
+          player: user.player
         };
 
         // Sign token
@@ -103,6 +106,28 @@ router.post("/login", (req, res) => {
           .json({ passwordincorrect: "Password incorrect" });
       }
     });
+  });
+});
+
+router.get("/memory/:id", (req, res) => {
+  console.log("GET memory req/res -> ", req.params.id)
+  const id = req.params.id;
+
+  // Find user by id
+  User.findOne({ _id:id}).then(user => {
+    console.log("User -> ",user)
+  });
+});
+
+router.post("/memory/:id", (req, res) => {
+  console.log("POST memory req/res -> ", req.params.id)
+  const id = req.params.id;
+  const tempmemory= req.body;
+  console.log("POST ->", req.body);
+
+  // // Find user by _id
+  User.findOneAndUpdate({ _id:id },{$set:{memory: tempmemory}}).then(User => {
+    console.log("posted successfully");
   });
 });
 

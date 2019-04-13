@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
+import { logoutUser, postMemory } from "../../actions/authActions";
 import Scoreboard from "./scoreboard";
 import "./style.css";
 
 
 let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
-    clicks = { first: null, second: null }, win = { c: 0, p: 0 }, score;
+    clicks = { first: null, second: null }, win = { c: 0, p: 0 };
 
 class Activegame extends Component {
     state = {
@@ -17,8 +17,18 @@ class Activegame extends Component {
     }
 
     componentDidMount = () => {
+        // console.log("id -> ", this.props.auth.user.id);
+        this.setState ({
+            memory: this.props.auth.user.memory,
+            computer: this.props.auth.user.computer,
+            player: this.props.auth.user.player
+        });
         this.createBtns();
         this.restart();
+    };
+
+    componentWillReceiveProps = () => {
+
     };
 
     getPossibles = () => {
@@ -70,6 +80,9 @@ class Activegame extends Component {
             this.setState({
                 memory: newMemoryState
             });
+            const id = this.props.auth.user.id
+            console.log("memory before post ->", this.state.memory)
+            this.props.postMemory(id,this.state.memory);
         }
         this.updateBtns();
         return -1;
@@ -239,7 +252,7 @@ class Activegame extends Component {
     render() {
         return (
             <div>
-                {console.log("this.state.memory ",this.state.memory)}
+                {console.log("Activegame Props ",this.props.auth.user.memory)}
                 < Scoreboard player={this.state.player} computer={this.state.computer}/>
                 <div id="hexa">
                 </div>
@@ -259,5 +272,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { logoutUser }
+    { logoutUser, postMemory }
 )(Activegame);
