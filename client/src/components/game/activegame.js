@@ -252,7 +252,7 @@ class Activegame extends Component {
     render() {
         return (
             <div>
-                {console.log("Activegame Props ",this.props.auth.user.memory)}
+                {console.log("Activegame Props ",this.props)}
                 < Scoreboard player={this.state.player} computer={this.state.computer}/>
                 <div id="hexa">
                 </div>
