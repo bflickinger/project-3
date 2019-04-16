@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
+import { addFlashMessage } from "../../actions/flashMessages";
 import classnames from "classnames";
 import Navbar from "../layout/Navbar";
 import "./style.css";
@@ -15,9 +16,12 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      isNewUser: false,
       errors: {}
     };
+    this.onSubmit = this.onSubmit.bind(this);
   }
+
 
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
@@ -40,15 +44,29 @@ class Register extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
     };
+    this.props.registerUser(newUser).then(
+      (res) => {
+        console.log(res);
+        if (typeof res !== 'undefined' && res.status === 200) {
+          console.log("addflashmessage res -> ", res);
+          this.props.addFlashMessage({
+            type: 'success',
+            text: 'You are now registered. Please login.'
+          });
+          this.props.history.push("/login");
+        }
+      });
 
-    this.props.registerUser(newUser, this.props.history);
+    // this.props.addFlashMessage({
+    //   type: 'success',
+    //   text: 'You are now registered. Please login.'
+    // });
   };
 
   render() {
@@ -56,14 +74,14 @@ class Register extends Component {
 
     return (
       <div>
-        <Navbar location={this.props.location.pathname} history={this.props.history}/>
+        <Navbar location={this.props.location.pathname} history={this.props.history} />
         <div className="container">
           <div className="row">
             <div className="col s8 offset-s2">
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <h4 className="center" style={{color:"white"}}>
+                <h4 className="center" style={{ color: "white" }}>
                   <b>Register</b>
-              </h4>
+                </h4>
               </div>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="input-field col s12">
@@ -148,7 +166,8 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -158,5 +177,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { registerUser }
+  { registerUser, addFlashMessage }
 )(withRouter(Register));

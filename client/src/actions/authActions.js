@@ -5,22 +5,37 @@ import jwt_decode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
 
 // Register User
-export const registerUser = (userData, history) => dispatch => {
-  axios
-    .post("/api/users/register", userData)
-    .then(res => history.push("/login"))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
+// export const registerUser = (userData, history) => dispatch => {
+//   axios
+//     .post("/api/users/register", userData)
+//     .then(res => {
+//       history.push("/login");
+//     })
+//     .catch(err => {
+//       dispatch({
+//         type: GET_ERRORS,
+//         payload: err.response.data
+//       })
+//     }
+//     );
+// };
+
+export function registerUser(userData) {
+  return dispatch => {
+    return axios.post('/api/users/register', userData)
+    .catch(err => {
+            dispatch({
+              type: GET_ERRORS,
+              payload: err.response.data
+            })
+          });
+  }
+}
 
 export const getMemory = (id, memory) => dispatch => {
   axios
     .post("/api/users/memory/" + id, memory)
-    .then(res => {console.log('postmemory res')})
+    .then(res => { console.log('postmemory res') })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -33,7 +48,7 @@ export const getMemory = (id, memory) => dispatch => {
 export const postMemory = (id, memory) => dispatch => {
   axios
     .post("/api/users/memory/" + id, memory)
-    .then(res => {console.log('postmemory res')})
+    .then(res => { console.log('postmemory res') })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
