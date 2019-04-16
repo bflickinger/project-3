@@ -15,9 +15,8 @@ class Navbar extends Component {
 
   render() {
     const { user } = this.props.auth;
-    // console.log("User? ", user);
     return (
-      <div className="navbar-fixed">
+      <div id="title-navbar" className="navbar-fixed">
         <nav>
           <div className="nav-wrapper white">
             {/* {console.log("are we authenticated? ",this.props.auth.isAuthenticated)} */}

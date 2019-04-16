@@ -1,4 +1,4 @@
-.navbar-fixed {
+#title-navbar {
     border-top: 2px solid lightblue;
 }
 
@@ -6,3 +6,16 @@
     color:black;
     margin-left: 10px;
 }
+nav {
+    background-color: rgba(0,0,0,0.2);
+}
+#buttonbar-row {
+    margin: 8px;
+    text-align: center;
+}
+
+.btn {
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
