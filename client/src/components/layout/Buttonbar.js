@@ -25,7 +25,7 @@ class Buttonbar extends Component {
             <div className="col s6">
                 <button className="btn btn-small waves-effect waves-light hoverable blue accent-3">Game Instructions</button>
                 <button className="btn btn-small waves-effect waves-light hoverable blue accent-3">Switch Order</button>
-                <button className="btn btn-small waves-effect waves-light hoverable blue accent-3">AI Resources</button>
+                <button className="btn btn-small waves-effect waves-light hoverable blue accent-3"><a href="https://www.youtube.com/watch?v=FWOZmmIUqHg"  target="_blank">AI Tutorial</a></button>
             </div>
         </div>
       </div>

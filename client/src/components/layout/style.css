@@ -17,5 +17,10 @@ nav {
 .btn {
     margin-left: 10px;
     border-radius: 3px;
+    color: white;
+}
+
+a {
+    color: white;
 }
 

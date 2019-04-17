@@ -31,7 +31,13 @@
     "mongoose": "^5.3.11",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "popmotion": "^8.6.8",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-pose": "^4.0.8",
+    "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
+    "styled-components": "^4.2.0",
     "validator": "^10.9.0"
   }
 }
