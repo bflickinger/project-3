@@ -22,7 +22,6 @@ class FlashMessage extends Component {
 
   render() {
     const { id, type, text } = this.props.message;
-    // const trigger =<Button onClick={this.onClick}>New Player!</Button>;
     const trigger =<button onClick={this.onClick} className="hide" ref={button => this.modalButton = button}></button>
     return (
       <div>
@@ -33,14 +32,6 @@ class FlashMessage extends Component {
     );
   }
 }
-
-// <div className={classnames('alert', {
-//   'alert-success': type === 'success',
-//   'alert-danger': type === 'error'
-// })}>
-//   {console.log(this.props.message)}
-//   <button onClick={this.onClick} className="close"><span>&times;</span></button>
-//   {text}
 
 FlashMessage.propTypes = {
   message: PropTypes.object.isRequired,
