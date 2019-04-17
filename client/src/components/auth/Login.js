@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 import Navbar from "../layout/Navbar";
+import FlashMessagesList from "../flash/FlashMessagesList";
 
 class Login extends Component {
   constructor() {
@@ -54,68 +55,69 @@ class Login extends Component {
 
     return (
       <div>
-      <Navbar location={this.props.location.pathname} history={this.props.history}/>
-      <div className="container">
-        <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col s8 offset-s2">
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-              <h4 className="center" style={{color:"white"}}>
-                <b>Login</b>
-              </h4>
-            </div>
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.email}
-                  error={errors.email}
-                  id="email"
-                  type="email"
-                  className={classnames("", {
-                    invalid: errors.email || errors.emailnotfound
-                  })}
-                />
-                <label htmlFor="email">Email</label>
-                <span className="red-text">
-                  {errors.email}
-                  {errors.emailnotfound}
-                </span>
+        <Navbar location={this.props.location.pathname} history={this.props.history} />
+        <FlashMessagesList />
+        <div className="container">
+          <div style={{ marginTop: "4rem" }} className="row">
+            <div className="col s8 offset-s2">
+              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                <h4 className="center" style={{ color: "white" }}>
+                  <b>Login</b>
+                </h4>
               </div>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.password}
-                  error={errors.password}
-                  id="password"
-                  type="password"
-                  className={classnames("", {
-                    invalid: errors.password || errors.passwordincorrect
-                  })}
-                />
-                <label htmlFor="password">Password</label>
-                <span className="red-text">
-                  {errors.password}
-                  {errors.passwordincorrect}
-                </span>
-              </div>
-              <div className="col s12 center" style={{ paddingLeft: "11.250px" }}>
-                <button
-                  style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem"
-                  }}
-                  type="submit"
-                  className="btn waves-effect waves-light hoverable blue accent-3"
-                >
-                  Login
+              <form noValidate onSubmit={this.onSubmit}>
+                <div className="input-field col s12">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.email}
+                    error={errors.email}
+                    id="email"
+                    type="email"
+                    className={classnames("", {
+                      invalid: errors.email || errors.emailnotfound
+                    })}
+                  />
+                  <label htmlFor="email">Email</label>
+                  <span className="red-text">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span>
+                </div>
+                <div className="input-field col s12">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.password}
+                    error={errors.password}
+                    id="password"
+                    type="password"
+                    className={classnames("", {
+                      invalid: errors.password || errors.passwordincorrect
+                    })}
+                  />
+                  <label htmlFor="password">Password</label>
+                  <span className="red-text">
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </span>
+                </div>
+                <div className="col s12 center" style={{ paddingLeft: "11.250px" }}>
+                  <button
+                    style={{
+                      width: "150px",
+                      borderRadius: "3px",
+                      letterSpacing: "1.5px",
+                      marginTop: "1rem"
+                    }}
+                    type="submit"
+                    className="btn waves-effect waves-light hoverable blue accent-3"
+                  >
+                    Login
                 </button>
-              </div>
-            </form>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }

@@ -24,9 +24,7 @@ class Dashboard extends Component {
           history={this.props.history}
         />
         <Buttonbar />
-        
         <div className="container-fluid">
-        
           <div className="row" id="main-row">
             <div id="leftside-col" className="col s6">
               <Activegame />
