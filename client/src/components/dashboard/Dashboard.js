@@ -23,11 +23,13 @@ class Dashboard extends Component {
         />
         <div className="container-fluid">
           <div className="row" id="main-row">
-            <div id="leftside-col" className="col s6">
+            <div id="leftside-col" className="col s12 l6">
               <Activegame />
             </div>
-            <div id="rightside-col" className="col s6" />
-              <Memorytracker />
+            <div id="rightside-col" className="col s12 l6">
+              <p>TESTINGdfadaafad fasddfasdfdafasdfj aksdfjlk jalskdfja sdlkfj alk fjaldfka lkdfja lksjfakdf alksdjflka sjflka jflkajdsflk jflkajsdlf ajdflk ajdflka jdkflsj
+              </p>
+            </div>
           </div>
         </div>
       </div>
