@@ -40,16 +40,29 @@ body {
   float: left
 }
 
+.button:focus,
+.button:active,
+.button.active,
+.empty:focus,
+.empty:active {
+  background-color: rgb(87, 92, 95);
+  border: rgba(0,255,0) 2px solid;
+}
+.button:hover,
+.empty:hover {
+  background-color: rgb(87, 92, 95);
+}
+
+.marked {
+  
+}
+
 .empty {
   background: #ccc
 }
 
 .hide {
   display: none
-}
-
-.marked {
-  border: #f60 3px solid
 }
 
 .long {

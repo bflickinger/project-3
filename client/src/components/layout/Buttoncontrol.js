@@ -71,7 +71,8 @@ class Buttoncontrol extends Component {
                         borderRadius: "3px"
                     }}
                     onClick={this.buttonClick}
-                    className="btn btn-small waves-effect waves-light hoverable blue accent-3"
+                    id="navbar-button"
+                    className="btn btn-small waves-effect waves-light hoverable accent-3"
                 >
                     {this.state.btntext}
                 </button>

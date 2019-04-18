@@ -9,6 +9,13 @@
 
 .btn {
   font-family:'Ubuntu', sans-serif;
+  border: solid rgb(0,255,0);
+  border-width: .5px;
+}
+
+h4 {
+  margin-top: 5px;
+  margin-bottom: 120px;
 }
 
 .container {

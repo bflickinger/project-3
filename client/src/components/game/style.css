@@ -3,28 +3,25 @@
     margin-left: 10px;
     background-color: black;
     padding: 10px;
-    border-radius: 3px;
+    border-radius: 5px;
     border: solid rgba(0,255,0);
-    border-width: 1px;
+    border-width: .5px;
     margin: 20px;
     width: 50%;
-    font-family: "fader";
     margin-left: 25%;
-    text-align: center; 
+    text-align: center;
  }
 
  .scoreboard-row {
      margin: 0;
-
  }
 
- @font-face {
-    font-family: "fader";
-    src: url("fader.ttf");
-    }
+ #reset-button {
+     background-color: black;
+     margin-top: 20px;
+     border: solid rgba(0,255,0);
+     border-width: .5px;
+     color: rgba(0,255,0);
+ }
 
-.txt {
-   font-size: 16px;
-}
-    
     

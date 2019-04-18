@@ -101,7 +101,7 @@ class Activegame extends Component {
         } else {
             this.props.incrementComputer();
         }
-        playBtn.innerHTML = str + "<br />Click to play.";
+        playBtn.innerHTML = str + "<br />Click to play again.";
         playBtn.className = "button long"
     }
     
@@ -227,6 +227,7 @@ class Activegame extends Component {
         }
         playBtn = document.createElement("button");
         playBtn.className = "button long hide";
+        playBtn.id = "reset-button";
         playBtn.addEventListener("click", this.restart, false);
         d.appendChild(playBtn);
     }

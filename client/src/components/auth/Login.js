@@ -58,7 +58,7 @@ class Login extends Component {
         <Navbar location={this.props.location.pathname} history={this.props.history} />
         <FlashMessagesList />
         <div className="container">
-          <div style={{ marginTop: "4rem" }} className="row">
+          <div className="row">
             <div className="col s8 offset-s2">
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <h4 className="center" style={{ color: "white" }}>
@@ -102,14 +102,8 @@ class Login extends Component {
                 </div>
                 <div className="col s12 center" style={{ paddingLeft: "11.250px" }}>
                   <button
-                    style={{
-                      width: "150px",
-                      borderRadius: "3px",
-                      letterSpacing: "1.5px",
-                      marginTop: "1rem"
-                    }}
                     type="submit"
-                    className="btn waves-effect waves-light hoverable blue accent-3"
+                    className="btn waves-effect waves-light hoverable accent-3 btn-large"
                   >
                     Login
                 </button>
