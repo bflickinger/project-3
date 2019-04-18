@@ -17,31 +17,6 @@ export function registerUser(userData) {
   }
 }
 
-export const getMemory = (id, memory) => dispatch => {
-  axios
-    .post("/api/users/memory/" + id, memory)
-    .then(res => { console.log('postmemory res') })
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
-
-//update the memory by user
-export const postMemory = (id, memory) => dispatch => {
-  axios
-    .post("/api/users/memory/" + id, memory)
-    .then(res => { console.log('postmemory res') })
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
-
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios

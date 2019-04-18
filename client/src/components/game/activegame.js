@@ -1,39 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser, postMemory } from "../../actions/authActions";
+import { incrementComputer, incrementPlayer, postMemory } from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
 import "./style.css";
 
 
 let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
-    clicks = { first: null, second: null }, win = { c: 0, p: 0 };
+    clicks = { first: null, second: null }
 
 class Activegame extends Component {
     state = {
-        memory: [],
-        computer: 0,
-        player: 0,
+        memory: []
     }
 
     componentDidMount = () => {
-        // console.log("id -> ", this.props.auth.user.id);
-        this.setState ({
-            memory: this.props.auth.user.memory,
-            computer: this.props.auth.user.computer,
-            player: this.props.auth.user.player
-        });
         this.createBtns();
         this.restart();
-    };
-
-    componentWillReceiveProps = () => {
-
-    };
+    }
 
     getPossibles = () => {
         let pos = [], tp = turn === 0 ? "W" : "B", gp = turn === 0 ? "B" : "W";
-        // console.log("board: ",board);
         for (let j = 0; j < 3; j++) {
             let jj = j + (turn === 0 ? -1 : 1);
             if (jj < 3 && jj > -1) {
@@ -49,7 +36,6 @@ class Activegame extends Component {
                 }
             }
         }
-        // console.log(`getPossiblities result ->`, pos);
         return pos;
     }
     
@@ -75,14 +61,8 @@ class Activegame extends Component {
         board[i][j] = " "; board[ii][jj] = "B";
         if (needSave) {
             memory.push({ board: brd, moves: mvs });
-            let newMemoryState = this.state.memory.slice();
-            newMemoryState.push({ board: brd, moves: mvs });
-            this.setState({
-                memory: newMemoryState
-            });
-            const id = this.props.auth.user.id
-            console.log("memory before post ->", this.state.memory)
-            this.props.postMemory(id,this.state.memory);
+            const id = this.props.auth.user.id;
+            this.props.postMemory(id,memory);
         }
         this.updateBtns();
         return -1;
@@ -102,22 +82,17 @@ class Activegame extends Component {
         let str = "The Computer wins!";
         if (r === 0) {
             str = "You win!";
-            win.p++;
-            this.setState ({
-                player: win.p
-            });
-            // console.log(this.state.player);
+            this.props.incrementPlayer();
             for (let i = 0; i < memory.length; i++) {
                 if (memory[i].board === lastMove.brd) {
                     memory[i].moves.splice(lastMove.mvi, 1);
                     break;
-                }
+                }            
             }
+            const id = this.props.auth.user.id;
+            this.props.postMemory(id,memory);
         } else {
-            win.c++;
-            this.setState ({
-                computer: win.c
-            });
+            this.props.incrementComputer();
         }
         playBtn.innerHTML = str + "<br />Click to play.";
         playBtn.className = "button long"
@@ -253,7 +228,7 @@ class Activegame extends Component {
         return (
             <div>
                 {console.log("Activegame Props ",this.props)}
-                < Scoreboard player={this.state.player} computer={this.state.computer}/>
+                < Scoreboard player={this.props.game.player} computer={this.props.game.computer}/>
                 <div id="hexa">
                 </div>
             </div>
@@ -262,15 +237,13 @@ class Activegame extends Component {
 }
 
 Activegame.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    game: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    game: state.game
 });
 
-export default connect(
-    mapStateToProps,
-    { logoutUser, postMemory }
-)(Activegame);
+export default connect(mapStateToProps, {incrementPlayer, incrementComputer, postMemory})(Activegame);

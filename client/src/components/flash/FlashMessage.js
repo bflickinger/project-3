@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button } from 'react-materialize';
+import { Modal } from 'react-materialize';
 import PropTypes from "prop-types";
 
 class FlashMessage extends Component {
@@ -19,7 +19,7 @@ class FlashMessage extends Component {
   }
 
   render() {
-    const { id, type, text } = this.props.message;
+    const { text } = this.props.message;
     const trigger =<button onClick={this.onClick} className="hide" ref={button => this.modalButton = button}></button>
     return (
       <div>
