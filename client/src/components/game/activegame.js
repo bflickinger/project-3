@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { incrementComputer, incrementPlayer, postMemory } from "../../actions/gameActions";
+import { incrementComputer, incrementPlayer, postMemory, setMemory } from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
 import "./style.css";
 
@@ -63,6 +63,7 @@ class Activegame extends Component {
             memory.push({ board: brd, moves: mvs });
             const id = this.props.auth.user.id;
             this.props.postMemory(id,memory);
+            this.props.setMemory(memory);
         }
         this.updateBtns();
         return -1;
@@ -91,6 +92,7 @@ class Activegame extends Component {
             }
             const id = this.props.auth.user.id;
             this.props.postMemory(id,memory);
+            this.props.setMemory(memory);
         } else {
             this.props.incrementComputer();
         }
@@ -246,4 +248,4 @@ const mapStateToProps = state => ({
     game: state.game
 });
 
-export default connect(mapStateToProps, {incrementPlayer, incrementComputer, postMemory})(Activegame);
+export default connect(mapStateToProps, {incrementPlayer, incrementComputer, postMemory, setMemory})(Activegame);

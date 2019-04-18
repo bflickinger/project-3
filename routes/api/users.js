@@ -124,7 +124,7 @@ router.post("/memory/:id", (req, res) => {
   User.findOneAndUpdate({ _id:id },{$set:{memory: tempmemory}}).then(User => {
     console.log("posted successfully");
   });
-  console.log('memory post res ->', res);
+  // console.log('memory post res ->', res);
 });
 
 module.exports = router;
