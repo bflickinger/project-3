@@ -7,7 +7,6 @@ import Activegame from "../game/activegame";
 import Memorytracker from "../game/memorytracker";
 import "./style.css";
 
-
 class Dashboard extends Component {
   onLogoutClick = e => {
     e.preventDefault();

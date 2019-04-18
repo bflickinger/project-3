@@ -12,3 +12,14 @@ nav {
     display: flex;
     flex-direction: row;
 }
+
+.sidenav {
+    height: 225px;
+    width: 200px;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 3px;
+}
+
+.sidenav li>a {
+    color: white;
+}

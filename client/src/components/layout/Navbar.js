@@ -3,13 +3,20 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Buttoncontrol from "./Buttoncontrol";
-import { options, Sidenav } from "materialize-css";
+import { Sidenav } from "materialize-css";
 import { Modal } from "react-materialize";
 import "./style.css";
 
+// document.addEventListener("DOMContentLoaded", function() {
+//   let elems = document.querySelectorAll(".sidenav");
+//   Sidenav.init(elems);
+//   console.log("The sidenav listener fired");
+// });
+
 document.addEventListener("DOMContentLoaded", function() {
   let elems = document.querySelectorAll(".sidenav");
-  Sidenav.init(elems, options);
+  Sidenav.init(elems);
+  console.log("The sidenav listener fired");
 });
 
 class Navbar extends Component {
@@ -19,11 +26,12 @@ class Navbar extends Component {
   };
 
   render() {
+
     return (
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo">
+            <a href="/" className="brand-logo center">
               Hexapawn
             </a>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
@@ -33,7 +41,7 @@ class Navbar extends Component {
               location={this.props.location}
               history={this.props.history}
             />
-            <ul className="right hide-on-med-and-down">
+            <ul className="hide-on-med-and-down">
               <li>
                 <a href="#">AI Reset</a>
               </li>
@@ -146,8 +154,6 @@ class Navbar extends Component {
           <Modal
             id="instructions"
             header="Game Instructions!"
-            message="Testing"
-            text="test yo"
             trigger={
               <li>
                 <a>Game Instructions</a>
