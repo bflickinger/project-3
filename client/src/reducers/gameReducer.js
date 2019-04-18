@@ -8,7 +8,7 @@ const initialState = {
   player: 0
 };
 
-export default function (state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case SET_GAME_MEMORY:
       console.log('reducer action ->', action.payload);

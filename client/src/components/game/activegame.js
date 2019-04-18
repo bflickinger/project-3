@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { incrementComputer, incrementPlayer, postMemory, setMemory } from "../../actions/gameActions";
+import { 
+    incrementComputer, incrementPlayer, postMemory, setMemory, getMemory
+ } from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
 import "./style.css";
 
@@ -15,6 +17,9 @@ class Activegame extends Component {
     }
 
     componentDidMount = () => {
+        console.log('cdm user id ->',this.props.auth.user.id);
+        this.props.getMemory(this.props.auth.user.id);
+        // console.log('cdm tempmemory ->',tempmemory);
         this.createBtns();
         this.restart();
     }
@@ -248,4 +253,6 @@ const mapStateToProps = state => ({
     game: state.game
 });
 
-export default connect(mapStateToProps, {incrementPlayer, incrementComputer, postMemory, setMemory})(Activegame);
+export default connect(
+    mapStateToProps, {incrementPlayer, incrementComputer, postMemory, setMemory, getMemory}
+    )(Activegame);

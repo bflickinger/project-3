@@ -17,14 +17,11 @@ const User = require("../../models/User");
 // @access Public
 router.post("/register", (req, res) => {
   // Form validation
-
   const { errors, isValid } = validateRegisterInput(req.body);
-
   // Check validation
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       return res.status(400).json({ email: "Email already exists" });
@@ -34,7 +31,6 @@ router.post("/register", (req, res) => {
         email: req.body.email,
         password: req.body.password
       });
-
       // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -55,24 +51,19 @@ router.post("/register", (req, res) => {
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
-
   const { errors, isValid } = validateLoginInput(req.body);
-
   // Check validation
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
   const email = req.body.email;
   const password = req.body.password;
-
   // Find user by email
   User.findOne({ email }).then(user => {
     // Check if user exists
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
-
     // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
@@ -82,7 +73,6 @@ router.post("/login", (req, res) => {
           id: user.id,
           name: user.name
         };
-
         // Sign token
         jwt.sign(
           payload,
@@ -106,12 +96,12 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/memory/:id", (req, res) => {
-  console.log("GET memory req/res -> ", req.params.id)
+router.get("/memory/:id", async (req, res) => {
   const id = req.params.id;
   // Find user by id
   User.findOne({ _id:id}).then(user => {
-    console.log("User -> ",user)
+    console.log("User -> ",user.memory);
+    return res.json(user.memory);
   });
 });
 
@@ -124,7 +114,6 @@ router.post("/memory/:id", (req, res) => {
   User.findOneAndUpdate({ _id:id },{$set:{memory: tempmemory}}).then(User => {
     console.log("posted successfully");
   });
-  // console.log('memory post res ->', res);
 });
 
 module.exports = router;

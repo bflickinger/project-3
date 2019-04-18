@@ -4,22 +4,32 @@ import {
   SET_GAME_MEMORY, GET_GAME_MEMORY, DELETE_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, RESET_SCORE
 } from "../actions/types";
 
-// export function getMemory(id, memory) {
-//   return dispatch => {
-//     return axios.get('/api/users/memory/', id, memory)
-//       .catch(err => console.log(err));
-//   }
-// }
+// export function getMemory(id) {
+// 	const request = axios.get('/api/users/memory/' + id);
+// 	setMemory(request);
+// };
 
-export function postMemory(id, memory) {
-  return(dispatch) => {
-      axios.post('/api/users/memory/' + id, memory)
-        .then((response) => {return (response)})
-        .catch((response) => {return (response)})
-    }
+export function getMemory(id) {
+  return (dispatch) => {
+    axios.get('/api/users/memory/' + id)
+      .then((res) => {
+        console.log('getMemory .then ->', res);
+        dispatch(setMemory(res));
+      })
+      .catch((res) => { return (res) })
+  }
 }
 
-export function setMemory(memory){
+export function postMemory(id, memory) {
+  return (dispatch) => {
+    axios.post('/api/users/memory/' + id, memory)
+      .then((response) => { return (response) })
+      .catch((response) => { return (response) })
+  }
+}
+
+export function setMemory(memory) {
+  console.log('setMemory fired');
   return {
     type: SET_GAME_MEMORY,
     payload: memory
