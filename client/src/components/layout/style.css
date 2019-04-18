@@ -1,17 +1,5 @@
-#title-navbar {
-    border-top: 2px solid lightblue;
-}
-
-#logged-name {
-    color:black;
-    margin-left: 10px;
-}
 nav {
-    background-color: rgba(0,0,0,0.2);
-}
-#buttonbar-row {
-    margin: 8px;
-    text-align: center;
+    background-color: rgba(0,0,0,0.0);
 }
 
 .btn {
@@ -20,7 +8,7 @@ nav {
     color: white;
 }
 
-a {
-    color: white;
+#navrow {
+    display: flex;
+    flex-direction: row;
 }
-

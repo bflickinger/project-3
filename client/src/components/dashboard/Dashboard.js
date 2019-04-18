@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Navbar from "../layout/Navbar";
-import Buttonbar from "../layout/Buttonbar";
 import Activegame from "../game/activegame";
 import Memorytracker from "../game/memorytracker";
 import "./style.css";
@@ -23,7 +22,6 @@ class Dashboard extends Component {
           location={this.props.location.pathname}
           history={this.props.history}
         />
-        <Buttonbar />
         <div className="container-fluid">
           <div className="row" id="main-row">
             <div id="leftside-col" className="col s6">
