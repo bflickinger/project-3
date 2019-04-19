@@ -43,11 +43,12 @@
  }
 
  #boards-col {
- 
+    
  }
 
  #memory-tracker {
-
+    height: calc(75vh - 50px);
+    overflow-y: scroll;
  }
 
  .scoreboard-row {
@@ -57,6 +58,12 @@
 @media only screen and (max-width: 100em) {
     #leftside-col {
       height: 50%;
-      min-height: 0;
+      min-height: 0;  
     }
   }
+
+@media only screen and (max-width: 802px) {
+  #memory-tracker {
+    height: calc(25vh);
+  }
+}
