@@ -34,7 +34,7 @@ class Navbar extends Component {
             <a href="/" className="brand-logo center">
               Hexapawn
             </a>
-            <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+            <a href="w" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
             </a>
             <Buttoncontrol
@@ -43,7 +43,7 @@ class Navbar extends Component {
             />
             <ul className="hide-on-med-and-down">
               <li>
-                <a href="#">AI Reset</a>
+                <a href="w">AI Reset</a>
               </li>
               <li>
                 <a
@@ -58,11 +58,9 @@ class Navbar extends Component {
               <Modal
                 id="instructions"
                 header="Game Instructions!"
-                message="Testing"
-                text="test yo"
                 trigger={
                   <li>
-                    <a>Game Instructions</a>
+                    <a href="w">Game Instructions</a>
                   </li>
                 }
               >
@@ -140,7 +138,7 @@ class Navbar extends Component {
 
         <ul className="sidenav" id="mobile-demo">
           <li>
-            <a href="#">AI Reset</a>
+            <a href="w">AI Reset</a>
           </li>
           <li>
             <a
@@ -156,7 +154,7 @@ class Navbar extends Component {
             header="Game Instructions!"
             trigger={
               <li>
-                <a>Game Instructions</a>
+                <a href="w">Game Instructions</a>
               </li>
             }
           >

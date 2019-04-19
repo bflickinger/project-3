@@ -1,5 +1,6 @@
 #leftside-col {
-    min-height: calc( 100vh - 64px);
+    
+    /* min-height: calc( 100vh - 64px); */
     padding-top: 25px;
     padding: 0;
     justify-content: center;
@@ -53,7 +54,7 @@
      margin: 0;
  }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 100em) {
     #leftside-col {
       height: 50%;
       min-height: 0;

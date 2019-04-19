@@ -65,7 +65,7 @@ class Buttoncontrol extends Component {
 
     render() {
         return (
-            <div className="right" style={{marginRight: "10px"}}>
+            <div className="right">
                 <button
                     style={{
                         borderRadius: "3px"

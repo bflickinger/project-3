@@ -25,3 +25,12 @@ nav {
 .sidenav li>a {
     color: white;
 }
+
+@media only screen and (max-width: 400px) {
+    #navbar-button {
+      margin: 2px;
+      padding-left: 3px;
+      padding-right: 3px;
+      width: 70px;
+    }
+  }
