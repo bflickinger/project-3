@@ -1,5 +1,5 @@
 import {
-  SET_GAME_MEMORY, GET_GAME_MEMORY, DELETE_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, RESET_SCORE
+  SET_GAME_MEMORY, DELETE_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
 } from "../actions/types";
 
 const initialState = {
@@ -11,14 +11,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_GAME_MEMORY:
-      console.log('setMemory reducer action ->', action.payload);
       return {
         ...state,
         memory: action.payload,
-      };
-    case GET_GAME_MEMORY:
-      return {
-        ...state,
       };
     case DELETE_GAME_MEMORY:
       return {
@@ -32,7 +27,14 @@ export default (state = initialState, action) => {
     case INCREMENT_COMPUTER:
       return {
         ...state,
-        computer: state.computer +1
+        computer: state.computer + 1
+      };
+    case SET_SCORE:
+      console.log('Reducer SET_SCORE action.payload ->', action.payload);
+      return {
+        ...state,
+        player: action.payload.player,
+        computer: action.payload.computer
       };
     case RESET_SCORE:
       return {

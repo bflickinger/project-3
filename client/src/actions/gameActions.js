@@ -1,13 +1,8 @@
 import axios from "axios";
 
 import {
-  SET_GAME_MEMORY, GET_GAME_MEMORY, DELETE_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, RESET_SCORE
+  SET_GAME_MEMORY, DELETE_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
 } from "../actions/types";
-
-// export function getMemory(id) {
-// 	const request = axios.get('/api/users/memory/' + id);
-// 	setMemory(request);
-// };
 
 export function getMemory(id) {
   return (dispatch) => {
@@ -30,10 +25,36 @@ export function postMemory(id, memory) {
 }
 
 export function setMemory(memory) {
-  // console.log('setMemory fired');
   return {
     type: SET_GAME_MEMORY,
     payload: memory
+  }
+}
+
+export function getScore(id) {
+  return (dispatch) => {
+    axios.get('/api/users/score/' + id)
+      .then((res) => {
+        console.log('getScore .then ->', res.data);
+        dispatch(setScore(res.data));
+        return res.data;
+      })
+      .catch((res) => { return (res) })
+  }
+}
+
+export function postScore(id, data) {
+  return (dispatch) => {
+    axios.post('/api/users/score/' + id, data)
+      .then((response) => { return (response) })
+      .catch((response) => { return (response) })
+  }
+}
+
+export function setScore(data) {
+  return {
+    type: SET_SCORE,
+    payload: data
   }
 }
 

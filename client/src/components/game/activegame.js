@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
-    incrementComputer, incrementPlayer, postMemory, setMemory, getMemory
+    incrementComputer, incrementPlayer, postMemory, setMemory, getMemory, getScore, postScore
 } from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
 import "./style.css";
@@ -15,12 +15,8 @@ class Activegame extends Component {
  
     componentDidMount = () => {
         let userId = this.props.auth.user.id;
-        // this.readMemory(userId, () => {
-        //     console.log('this.props.game.memory ->',this.props.game.memory);
-        // });
-        this.props.getMemory(userId, () => {
-            console.log('gosh');
-        });
+        this.props.getMemory(userId);
+        this.props.getScore(userId);
         this.createBtns();
         this.restart();
     }
@@ -46,7 +42,6 @@ class Activegame extends Component {
     }
 
     computerMoves = () => {
-        console.log('activegame local memory ->', memory);
         let brd = this.getBoard(), mvs, needSave = false;
         for (let i = 0; i < memory.length; i++) {
             if (memory[i].board === brd) {
@@ -88,20 +83,22 @@ class Activegame extends Component {
 
     finish = (r) => {
         let str = "The Computer wins!";
+        const id = this.props.auth.user.id;
         if (r === 0) {
             str = "You win!";
             this.props.incrementPlayer();
+            this.props.postScore(id, this.props.game);
             for (let i = 0; i < memory.length; i++) {
                 if (memory[i].board === lastMove.brd) {
                     memory[i].moves.splice(lastMove.mvi, 1);
                     break;
                 }
             }
-            const id = this.props.auth.user.id;
             this.props.postMemory(id, memory);
             this.props.setMemory(memory);
         } else {
             this.props.incrementComputer();
+            this.props.postScore(id, this.props.game);
         }
         playBtn.innerHTML = str + "<br />Click to play again.";
         playBtn.className = "button long"
@@ -155,6 +152,9 @@ class Activegame extends Component {
     }
 
     btnHandle = (e) => {
+        memory = this.props.game.memory;
+        console.log('activegame local memory ->', memory);
+        console.log('btnHandle props ->', this.props.game.memory);
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
 
@@ -257,5 +257,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-    mapStateToProps, { incrementPlayer, incrementComputer, postMemory, setMemory, getMemory }
+    mapStateToProps, { incrementPlayer, incrementComputer, postMemory, setMemory, getMemory, getScore, postScore }
 )(Activegame);
