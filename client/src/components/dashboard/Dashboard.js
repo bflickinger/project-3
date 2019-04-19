@@ -21,14 +21,28 @@ class Dashboard extends Component {
           location={this.props.location.pathname}
           history={this.props.history}
         />
-        <div className="container-fluid">
+        <div id="main-dash-container" className="container-fluid">
           <div className="row" id="main-row">
             <div id="leftside-col" className="col s12 l6">
               <Activegame />
             </div>
             <div id="rightside-col" className="col s12 l6">
-              <p>TESTINGdfadaafad fasddfasdfdafasdfj aksdfjlk jalskdfja sdlkfj alk fjaldfka lkdfja lksjfakdf alksdjflka sjflka jflkajdsflk jflkajsdlf ajdflk ajdflka jdkflsj
-              </p>
+              <div className="container-fluid" id="boards-titlebox">
+                <div className="row scoreboard-row">PAST GAMES</div>
+                <div className="row scoreboard-row">
+                  <div className="col s6">Total Games</div>
+                  <div className="col s6">Memory</div>
+                </div>
+              </div>
+              <div className="container-fluid" id="boards-box">
+                <div className="row" id="boards-row">
+                  <div className="col l12" id="boards-col">
+                    <Memorytracker />
+                    <Memorytracker />
+                    <Memorytracker />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
