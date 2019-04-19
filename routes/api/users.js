@@ -100,7 +100,7 @@ router.get("/memory/:id", async (req, res) => {
   const id = req.params.id;
   // Find user by id
   User.findOne({ _id:id}).then(user => {
-    console.log("User -> ",user.memory);
+    console.log("GET -> ",user.memory);
     return res.json(user.memory);
   });
 });
@@ -111,8 +111,9 @@ router.post("/memory/:id", (req, res) => {
   const tempmemory= req.body;
   console.log("POST ->", req.body);
   // // Find user by _id
-  User.findOneAndUpdate({ _id:id },{$set:{memory: tempmemory}}).then(User => {
+  User.findOneAndUpdate({ _id:id },{$set:{memory: tempmemory}}).then(user => {
     console.log("posted successfully");
+    return res.json(user);
   });
 });
 
