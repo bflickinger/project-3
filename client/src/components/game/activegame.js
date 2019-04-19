@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { 
+import {
     incrementComputer, incrementPlayer, postMemory, setMemory, getMemory
- } from "../../actions/gameActions";
+} from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
 import "./style.css";
 
@@ -12,18 +12,19 @@ let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }
 
 class Activegame extends Component {
-    state = {
-        memory: []
-    }
-
+ 
     componentDidMount = () => {
-        console.log('cdm user id ->',this.props.auth.user.id);
-        this.props.getMemory(this.props.auth.user.id);
-        // console.log('cdm tempmemory ->',tempmemory);
+        let userId = this.props.auth.user.id;
+        // this.readMemory(userId, () => {
+        //     console.log('this.props.game.memory ->',this.props.game.memory);
+        // });
+        this.props.getMemory(userId, () => {
+            console.log('gosh');
+        });
         this.createBtns();
         this.restart();
     }
-
+   
     getPossibles = () => {
         let pos = [], tp = turn === 0 ? "W" : "B", gp = turn === 0 ? "B" : "W";
         for (let j = 0; j < 3; j++) {
@@ -43,8 +44,9 @@ class Activegame extends Component {
         }
         return pos;
     }
-    
+
     computerMoves = () => {
+        console.log('activegame local memory ->', memory);
         let brd = this.getBoard(), mvs, needSave = false;
         for (let i = 0; i < memory.length; i++) {
             if (memory[i].board === brd) {
@@ -67,13 +69,13 @@ class Activegame extends Component {
         if (needSave) {
             memory.push({ board: brd, moves: mvs });
             const id = this.props.auth.user.id;
-            this.props.postMemory(id,memory);
+            this.props.postMemory(id, memory);
             this.props.setMemory(memory);
         }
         this.updateBtns();
         return -1;
     }
-    
+
     getBoard = () => {
         let str = "";
         for (let j = 0; j < 3; j++) {
@@ -83,7 +85,7 @@ class Activegame extends Component {
         }
         return str;
     }
-    
+
     finish = (r) => {
         let str = "The Computer wins!";
         if (r === 0) {
@@ -93,10 +95,10 @@ class Activegame extends Component {
                 if (memory[i].board === lastMove.brd) {
                     memory[i].moves.splice(lastMove.mvi, 1);
                     break;
-                }            
+                }
             }
             const id = this.props.auth.user.id;
-            this.props.postMemory(id,memory);
+            this.props.postMemory(id, memory);
             this.props.setMemory(memory);
         } else {
             this.props.incrementComputer();
@@ -104,16 +106,16 @@ class Activegame extends Component {
         playBtn.innerHTML = str + "<br />Click to play again.";
         playBtn.className = "button long"
     }
-    
+
     checkFinished = () => {
         if (this.getPossibles().length < 1) return turn === 0 ? 1 : 0;
-    
+
         //Checks to see if either color has made it to the opposite side of the board
         for (let i = 0; i < 3; i++) {
             if (board[i][0] === "W") return 0;
             if (board[i][2] === "B") return 1;
         }
-    
+
         //Check to see if only one color piece is left.
         let w = 0, b = 0;
         for (let j = 0; j < 3; j++) {
@@ -127,13 +129,13 @@ class Activegame extends Component {
         //Not finished
         return -1;
     }
-    
+
     nextPlayer = () => {
         let r;
         this.updateBtns();
         turn = turn === 0 ? 1 : 0;
         r = this.checkFinished();
-    
+
         if (r > -1) {
             this.finish(r);
         } else {
@@ -144,18 +146,18 @@ class Activegame extends Component {
             }
         }
     }
-    
-    search = (o, arr)  =>{
+
+    search = (o, arr) => {
         for (let i = 0; i < arr.length; i++) {
             if (o.f === arr[i].f && o.t === arr[i].t) return i;
         }
         return -1;
     }
-    
+
     btnHandle = (e) => {
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
-    
+
         if (clicks.first === null && board[ti][tj] === "W") {
             clicks.first = e.target;
             clicks.first.className += " marked"
@@ -235,8 +237,8 @@ class Activegame extends Component {
     render() {
         return (
             <div>
-                {console.log("Activegame Props ",this.props)}
-                < Scoreboard player={this.props.game.player} computer={this.props.game.computer}/>
+                {/* {console.log("Activegame Props ",this.props)} */}
+                < Scoreboard player={this.props.game.player} computer={this.props.game.computer} />
                 <div id="hexa">
                 </div>
             </div>
@@ -255,5 +257,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-    mapStateToProps, {incrementPlayer, incrementComputer, postMemory, setMemory, getMemory}
-    )(Activegame);
+    mapStateToProps, { incrementPlayer, incrementComputer, postMemory, setMemory, getMemory }
+)(Activegame);

@@ -11,7 +11,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_GAME_MEMORY:
-      console.log('reducer action ->', action.payload);
+      console.log('setMemory reducer action ->', action.payload);
       return {
         ...state,
         memory: action.payload,

@@ -13,8 +13,9 @@ export function getMemory(id) {
   return (dispatch) => {
     axios.get('/api/users/memory/' + id)
       .then((res) => {
-        console.log('getMemory .then ->', res);
-        dispatch(setMemory(res));
+        console.log('getMemory .then ->', res.data);
+        dispatch(setMemory(res.data));
+        return res.data;
       })
       .catch((res) => { return (res) })
   }
@@ -29,7 +30,7 @@ export function postMemory(id, memory) {
 }
 
 export function setMemory(memory) {
-  console.log('setMemory fired');
+  // console.log('setMemory fired');
   return {
     type: SET_GAME_MEMORY,
     payload: memory
