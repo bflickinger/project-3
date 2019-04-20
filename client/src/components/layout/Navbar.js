@@ -7,19 +7,14 @@ import { Sidenav } from "materialize-css";
 import { Modal } from "react-materialize";
 import "./style.css";
 
-// document.addEventListener("DOMContentLoaded", function() {
-//   let elems = document.querySelectorAll(".sidenav");
-//   Sidenav.init(elems);
-//   console.log("The sidenav listener fired");
-// });
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
   let elems = document.querySelectorAll(".sidenav");
   Sidenav.init(elems);
   console.log("The sidenav listener fired");
 });
 
 class Navbar extends Component {
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -29,6 +24,7 @@ class Navbar extends Component {
 
     return (
       <div>
+        {console.log('Navbar props ->', this.props)}
         <nav>
           <div className="nav-wrapper">
             <a href="/" className="brand-logo center">
@@ -55,82 +51,82 @@ class Navbar extends Component {
                 </a>
               </li>
               <div id="modal-div">
-              <Modal
-                id="instructions"
-                header="Game Instructions!"
-                trigger={
-                  <li>
-                    <a href="w">Game Instructions</a>
-                  </li>
-                }
-              >
-                Hexpawn is designed to show machine learning at a very basic
-                level. The AI computer will get progressively more difficult to
-                beat after learning from its mistakes. To win the game:
+                <Modal
+                  id="instructions"
+                  header="Game Instructions!"
+                  trigger={
+                    <li>
+                      <a href="w">Game Instructions</a>
+                    </li>
+                  }
+                >
+                  Hexpawn is designed to show machine learning at a very basic
+                  level. The AI computer will get progressively more difficult to
+                  beat after learning from its mistakes. To win the game:
                 <table>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        Get one of your pawns to the other side of the board.
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>
+                          Get one of your pawns to the other side of the board.
                       </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Remove all the opponents pawns from the board.</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Force a draw on your turn to move.</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table>
-                  <thead>
-                    <tr>
-                      <th />
-                      <th>Rules</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        You are white and the computer is black. You get the
-                        first move.
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Remove all the opponents pawns from the board.</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Force a draw on your turn to move.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th />
+                        <th>Rules</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>
+                          You are white and the computer is black. You get the
+                          first move.
                       </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>
-                        Your pawn can move forward one square if the square is
-                        empty.
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>
+                          Your pawn can move forward one square if the square is
+                          empty.
                       </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>
-                        Your pawn can move diagonally one square to attack a
-                        black pawn.
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>
+                          Your pawn can move diagonally one square to attack a
+                          black pawn.
                       </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>
-                        Click the pawn you want to move, then click the
-                        destination square.
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>
+                          Click the pawn you want to move, then click the
+                          destination square.
                       </td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>
-                        The computer will move automatically and it will be your
-                        turn again.
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>
+                          The computer will move automatically and it will be your
+                          turn again.
                       </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </Modal>
+                      </tr>
+                    </tbody>
+                  </table>
+                </Modal>
               </div>
             </ul>
           </div>
