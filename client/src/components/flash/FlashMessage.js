@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 class FlashMessage extends Component {
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
   }
 
-  onClick() {
+  triggerDeleteFlashMessage() {
+    console.log('flashmessage fired');
     this.props.deleteFlashMessage(this.props.message.id);
   }
 
@@ -23,7 +23,7 @@ class FlashMessage extends Component {
     const trigger =<button onClick={this.onClick} className="hide" ref={button => this.modalButton = button}></button>
     return (
       <div>
-        <Modal id="newUser" header="Registration Successful!" trigger={trigger}>
+        <Modal options={{dismissible: false, onCloseEnd: () => this.triggerDeleteFlashMessage()}} id="newUser"  header="Registration Successful!" trigger={trigger}>
           {text}
         </Modal>
       </div>
