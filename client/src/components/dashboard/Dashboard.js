@@ -28,10 +28,10 @@ class Dashboard extends Component {
             </div>
             <div id="rightside-col" className="col s12 l6">
               <div className="container-fluid" id="boards-titlebox">
-                <div className="row scoreboard-row">PAST GAMES</div>
+                <div className="row scoreboard-row">GAME HISTORY</div>
                 <div className="row scoreboard-row">
                   <div className="col s6">Total Games</div>
-                  <div className="col s6">Memory</div>
+                  <div className="col s6">Moves</div>
                 </div>
               </div>
               <div className="container-fluid" id="boards-box">
