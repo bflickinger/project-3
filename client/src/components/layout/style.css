@@ -13,6 +13,8 @@ nav {
 
 #navbar-button {
     border: none;
+    margin: 5px;
+    margin-right: 20px;
 }
 
 .sidenav {
@@ -24,6 +26,26 @@ nav {
 
 .sidenav li>a {
     color: white;
+}
+
+.modal-footer {
+    background-color: black !important;
+}
+
+.modal {
+    background-color: black;
+    color: white;
+    border: solid white;
+    border-width: 1px;
+}
+
+.waves-green {
+    /* background-color: red; */
+    color: rgba(0,255,0);
+}
+
+.waves-green:hover {
+    background-color: lightblue;
 }
 
 @media only screen and (max-width: 400px) {

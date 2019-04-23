@@ -10,7 +10,7 @@
 .btn {
   font-family:'Ubuntu', sans-serif;
   border: solid rgb(0,255,0);
-  border-width: .5px;
+  border-width: 1px;
 }
 
 .page-titles {
