@@ -36,7 +36,8 @@ class Dashboard extends Component {
               </div>
               <div className="container-fluid" id="boards-box">
                 <div className="row" id="boards-row">
-                  <div className="col s12" id="boards-col">
+                  <div className="col s6" id="boards-col">
+                    <Memorytracker />
                     <Memorytracker />
                     <Memorytracker />
                     <Memorytracker />

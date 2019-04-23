@@ -7,18 +7,17 @@ import { Sidenav } from "materialize-css";
 import { Modal } from "react-materialize";
 import "./style.css";
 
-document.addEventListener("DOMContentLoaded", () => {
-  let elems = document.querySelectorAll(".sidenav");
-  Sidenav.init(elems);
-  console.log("The sidenav listener fired");
-});
-
 class Navbar extends Component {
 
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
+
+  componentDidMount() {
+    let elems = document.querySelectorAll(".sidenav");
+    let instance = Sidenav.init(elems);
+  }
 
   render() {
 
@@ -62,7 +61,7 @@ class Navbar extends Component {
                 >
                   Hexpawn is designed to show machine learning at a very basic
                   level. The AI computer will get progressively more difficult to
-                  beat after learning from its mistakes. To win the game:
+                  beat after learning from its mistakes. To win the game do ONE of the following:
                 <table>
                     <tbody>
                       <tr>
@@ -156,7 +155,7 @@ class Navbar extends Component {
           >
             Hexpawn is designed to show machine learning at a very basic level.
             The AI computer will get progressively more difficult to beat after
-            learning from its mistakes. To win the game:
+            learning from its mistakes. To win the game do ONE of the following:
             <table>
               <tbody>
                 <tr>

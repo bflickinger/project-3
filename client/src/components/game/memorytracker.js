@@ -16,18 +16,18 @@ class Memorytracker extends Component {
     
     createBtns = () => {
         let b, d = document.createElement("div"), v = false, x = document.getElementById("memory-tracker");
-        d.className += "board";
+        d.className += "board2";
         x.appendChild(d);
         for (let j = 0; j < 3; j++) {
             for (let i = 0; i < 3; i++) {
-                b = document.createElement("button");
+                b = document.createElement("button2");
                 b.id = "btn" + (i + j * 3);
                 b.i = i; b.j = j;
                 b.addEventListener("click", this.btnHandle, false);
                 b.appendChild(document.createTextNode(""));
                 d.appendChild(b);
-                if (v) b.className = "button"
-                else b.className = "empty";
+                if (v) b.className = "button2"
+                else b.className = "empty2";
                 v = !v;
             }
         }
