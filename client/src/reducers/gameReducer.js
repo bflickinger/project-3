@@ -1,5 +1,5 @@
 import {
-  SET_GAME_MEMORY, DELETE_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
+  SET_GAME_MEMORY, RESET_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
 } from "../actions/types";
 
 const initialState = {
@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
         ...state,
         memory: action.payload,
       };
-    case DELETE_GAME_MEMORY:
+    case RESET_GAME_MEMORY:
       return {
         ...state,
         memory: []

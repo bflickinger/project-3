@@ -5,6 +5,9 @@ import { logoutUser } from "../../actions/authActions";
 import Buttoncontrol from "./Buttoncontrol";
 import { Sidenav } from "materialize-css";
 import { Modal } from "react-materialize";
+import {
+  deleteMemory, deleteScore
+} from "../../actions/gameActions";
 import "./style.css";
 
 class Navbar extends Component {
@@ -14,9 +17,21 @@ class Navbar extends Component {
     this.props.logoutUser();
   };
 
+  aiReset = f => {
+    f.preventDefault();
+    let id = this.props.auth.user.id;
+    // console.log('reset!');
+    this.props.deleteScore(id);
+    this.props.deleteMemory(id);
+  };
+
   componentDidMount() {
     let elems = document.querySelectorAll(".sidenav");
     let instance = Sidenav.init(elems);
+    if(this.props.location==="/dashboard"){
+      document.getElementById("aihref1").className = "";
+      document.getElementById("aihref2").className = "";
+    };
   }
 
   render() {
@@ -26,10 +41,10 @@ class Navbar extends Component {
         {console.log('Navbar props ->', this.props)}
         <nav>
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo center">
+            <a href={this.props.location}className="brand-logo center">
               Hexapawn
             </a>
-            <a href="w" data-target="mobile-demo" className="sidenav-trigger">
+            <a href={this.props.location} data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
             </a>
             <Buttoncontrol
@@ -38,7 +53,7 @@ class Navbar extends Component {
             />
             <ul className="hide-on-med-and-down">
               <li>
-                <a href="w">AI Reset</a>
+                <a href="#" onClick={this.aiReset} id="aihref1" className="hide">AI Reset</a>
               </li>
               <li>
                 <a
@@ -55,7 +70,7 @@ class Navbar extends Component {
                   header="Game Instructions!"
                   trigger={
                     <li>
-                      <a href="w">Game Instructions</a>
+                      <a href={this.props.location}>Game Instructions</a>
                     </li>
                   }
                 >
@@ -133,7 +148,7 @@ class Navbar extends Component {
 
         <ul className="sidenav" id="mobile-demo">
           <li>
-            <a href="w">AI Reset</a>
+            <a href="#" onClick={this.aiReset} id="aihref2" className="hide">AI Reset</a>
           </li>
           <li>
             <a
@@ -235,5 +250,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { logoutUser, deleteMemory, deleteScore }
 )(Navbar);

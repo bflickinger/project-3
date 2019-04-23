@@ -142,6 +142,48 @@ router.post("/score/:id", (req, res) => {
       }
     }).then(user => {
       return res.json(user);
+    }).catch;
+});
+
+//Reset score and memory in database
+//Score
+
+router.post("/resetscore/:id", (req, res) => {
+  const id = req.params.id;
+  console.log('resetscore db fired', id);
+  // // Find user by _id
+  User.findOneAndUpdate({
+    _id: id
+  },
+    {
+      $set: {
+        player: 0,
+        computer: 0
+      }
+    }).then(user => {
+      return res.json(user);
+    }).catch(user => {
+      return res.json(user);
+    });
+});
+
+//Memory
+
+router.post("/resetmemory/:id", (req, res) => {
+  const id = req.params.id;
+  console.log('resetmemory fired', req.body);
+  // // Find user by _id
+  User.findOneAndUpdate({
+    _id: id
+  },
+    {
+      $set: {
+        memory: []
+      }
+    }).then(user => {
+      return res.json(user);
+    }).catch(user => {
+      return res.json(user);
     });
 });
 

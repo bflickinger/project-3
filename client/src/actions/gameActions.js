@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import {
-  SET_GAME_MEMORY, DELETE_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
+  SET_GAME_MEMORY, RESET_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
 } from "../actions/types";
 
 //Memory Actions
@@ -73,14 +73,40 @@ export function incrementComputer() {
   }
 }
 
+export function deleteScore(id) {
+  return (dispatch) => {
+    axios.post('/api/users/resetscore/' + id)
+      .then((res) => {
+        console.log('deleteScore .then ->', res.data);
+        dispatch(resetScore());
+        return res.data;
+      })
+      .catch((res) => { return (res) })
+  }
+}
+
 export function resetScore() {
+  console.log('resetScore redux fired !')
   return{
     type: RESET_SCORE
   }
 }
 
-export function deleteMemory() {
+export function deleteMemory(id) {
+  return (dispatch) => {
+    axios.post('/api/users/resetmemory/' + id)
+      .then((res) => {
+        console.log('deleteMemory .then ->', res.data);
+        dispatch(resetMemory());
+        return res.data;
+      })
+      .catch((res) => { return (res) })
+  }
+}
+
+export function resetMemory() {
+  console.log('resetMemory redux fired !')
   return{
-    type: DELETE_GAME_MEMORY
+    type: RESET_GAME_MEMORY
   }
 }
