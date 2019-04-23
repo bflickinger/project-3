@@ -153,8 +153,8 @@ class Activegame extends Component {
 
     btnHandle = (e) => {
         memory = this.props.game.memory;
-        console.log('activegame local memory ->', memory);
-        console.log('btnHandle props ->', this.props.game.memory);
+        // console.log('activegame local memory ->', memory);
+        // console.log('btnHandle props ->', this.props.game.memory);
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
 

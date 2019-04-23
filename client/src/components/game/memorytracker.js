@@ -2,18 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./style.css";
-import {
-    getMemory
-} from "../../actions/gameActions";
 
 let board;
 
 class Memorytracker extends Component {
-    onLogoutClick = e => {
-        e.preventDefault();
-        this.props.logoutUser();
-    };
-
+  
     componentDidMount = () => {
         this.createBoard();
         this.createBtns();
@@ -63,22 +56,21 @@ class Memorytracker extends Component {
     render() {
 
         return (
-                <div id="memory-tracker">
+                <div id="memory-tracker" className="poop">
+                    {console.log('Memory Tracker Render props ->', this.props)}
                 </div>
         );
     }
 }
 
 Memorytracker.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    game: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    game: state.game
 });
 
 export default connect(
-    mapStateToProps,
-    { getMemory }
+    mapStateToProps
 )(Memorytracker);

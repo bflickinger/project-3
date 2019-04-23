@@ -1,18 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
 import Navbar from "../layout/Navbar";
 import Activegame from "../game/activegame";
 import Memorytracker from "../game/memorytracker";
 import "./style.css";
+import { isArray } from "util";
 
 class Dashboard extends Component {
-  onLogoutClick = e => {
-    e.preventDefault();
-    this.props.logoutUser();
-  };
-
   render() {
 
     return (
@@ -37,10 +32,10 @@ class Dashboard extends Component {
               <div className="container-fluid" id="boards-box">
                 <div className="row" id="boards-row">
                   <div className="col s12" id="boards-col">
-                    <Memorytracker />
-                    <Memorytracker />
-                    <Memorytracker />
-                    <Memorytracker />
+                    {console.log('Dashboard props ->', this.props.game)}
+                    {this.props.game && isArray(this.props.game.memory) ? this.props.game.memory.map((memory, index) => (
+                      <Memorytracker key={index} memory={memory}/>
+                    )) : ""}
                   </div>
                 </div>
               </div>
@@ -53,15 +48,13 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  game: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  game: state.game
 });
 
 export default connect(
-  mapStateToProps,
-  { logoutUser }
+  mapStateToProps
 )(Dashboard);

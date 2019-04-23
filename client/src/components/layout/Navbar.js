@@ -38,7 +38,7 @@ class Navbar extends Component {
 
     return (
       <div>
-        {console.log('Navbar props ->', this.props)}
+        {/* {console.log('Navbar props ->', this.props)} */}
         <nav>
           <div className="nav-wrapper">
             <a href={this.props.location}className="brand-logo center">

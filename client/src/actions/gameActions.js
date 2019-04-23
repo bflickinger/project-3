@@ -10,7 +10,7 @@ export function getMemory(id) {
   return (dispatch) => {
     axios.get('/api/users/memory/' + id)
       .then((res) => {
-        console.log('getMemory .then ->', res.data);
+        // console.log('getMemory .then ->', res.data);
         dispatch(setMemory(res.data));
         return res.data;
       })
@@ -38,7 +38,7 @@ export function getScore(id) {
   return (dispatch) => {
     axios.get('/api/users/score/' + id)
       .then((res) => {
-        console.log('getScore .then ->', res.data);
+        // console.log('getScore .then ->', res.data);
         dispatch(setScore(res.data));
         return res.data;
       })
@@ -77,7 +77,7 @@ export function deleteScore(id) {
   return (dispatch) => {
     axios.post('/api/users/resetscore/' + id)
       .then((res) => {
-        console.log('deleteScore .then ->', res.data);
+        // console.log('deleteScore .then ->', res.data);
         dispatch(resetScore());
         return res.data;
       })
@@ -86,7 +86,7 @@ export function deleteScore(id) {
 }
 
 export function resetScore() {
-  console.log('resetScore redux fired !')
+  // console.log('resetScore redux fired !')
   return{
     type: RESET_SCORE
   }
@@ -96,7 +96,7 @@ export function deleteMemory(id) {
   return (dispatch) => {
     axios.post('/api/users/resetmemory/' + id)
       .then((res) => {
-        console.log('deleteMemory .then ->', res.data);
+        // console.log('deleteMemory .then ->', res.data);
         dispatch(resetMemory());
         return res.data;
       })
@@ -105,7 +105,7 @@ export function deleteMemory(id) {
 }
 
 export function resetMemory() {
-  console.log('resetMemory redux fired !')
+  // console.log('resetMemory redux fired !')
   return{
     type: RESET_GAME_MEMORY
   }
