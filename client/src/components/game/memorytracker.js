@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import "./style.css";
 
+let board;
+
 class Memorytracker extends Component {
     onLogoutClick = e => {
         e.preventDefault();
@@ -11,8 +13,21 @@ class Memorytracker extends Component {
     };
 
     componentDidMount = () => {
+        this.createBoard();
         this.createBtns();
     }
+
+    createBoard = () => {
+        board = new Array(3);
+        for (let i = 0; i < 3; i++) {
+            board[i] = new Array(3);
+        }
+        for (let j = 0; j < 3; j++) {
+            for (let i = 0; i < 3; i++) {
+                board[i][j] = j === 0 ? "B" : j === 2 ? "W" : " ";
+            }
+        }
+    };
     
     createBtns = () => {
         let b, d = document.createElement("div"), v = false, x = document.getElementById("memory-tracker");
@@ -32,6 +47,16 @@ class Memorytracker extends Component {
             }
         }
     }
+
+    updateBtns = () => {
+        let b;
+        for (let j = 0; j < 3; j++) {
+            for (let i = 0; i < 3; i++) {
+                b = document.getElementById("btn" + (i + j * 3));
+                b.innerHTML = board[i][j] === "B" ? "&#x265F;" : board[i][j] === "W" ? "&#x2659;" : " ";
+            }
+        }
+    };
 
     render() {
 

@@ -41,14 +41,14 @@
 
  }
 
- #boards-col {
-    
- }
-
  #memory-tracker {
     height: calc(75vh - 50px);
-    overflow-y: scroll;
+    overflow-y: hidden;
  }
+
+ #memory-tracker:hover {
+  overflow-y: scroll;
+}
 
  .scoreboard-row {
      margin: 0;
