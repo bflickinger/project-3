@@ -43,11 +43,11 @@ export function getScore(id) {
   }
 }
 
-export function postScore(id, data) {
+export function postScore(id, scores) {
   return (dispatch) => {
-    axios.post('/api/users/score/' + id, data)
-      .then((response) => { return (response) })
-      .catch((response) => { return (response) })
+    axios.post('/api/users/score/' + id, scores)
+      .then((res) => { return (res) })
+      .catch((res) => { return (res) })
   }
 }
 

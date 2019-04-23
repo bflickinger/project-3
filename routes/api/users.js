@@ -99,39 +99,50 @@ router.post("/login", (req, res) => {
 router.get("/memory/:id", async (req, res) => {
   const id = req.params.id;
   // Find user by id
-  User.findOne({ _id:id}).then(user => {
+  User.findOne({ _id: id }).then(user => {
     // console.log("GET -> ",user.memory);
     return res.json(user.memory);
   });
 });
 
 router.post("/memory/:id", (req, res) => {
-  // console.log("POST memory req/res -> ", req.params.id)
   const id = req.params.id;
-  const tempmemory= req.body;
+  const tempmemory = req.body;
   // // Find user by _id
-  User.findOneAndUpdate({ _id:id },{$set:{memory: tempmemory}}).then(user => {
-    return res.json(user);
-  });
+  User.findOneAndUpdate({
+    _id: id
+  },
+    {
+      $set: { memory: tempmemory }
+    }).then(user => {
+      return res.json(user);
+    });
 });
 
 router.get("/score/:id", async (req, res) => {
   const id = req.params.id;
-  User.findOne({ _id:id}).then(user => {
-    console.log("GET Score -> ",user);
+  User.findOne({ _id: id }).then(user => {
+    console.log("GET Score -> ", user);
     return res.json(user);
   });
 });
 
 router.post("/score/:id", (req, res) => {
-  console.log("POST score req/res -> ", req.body)
   const id = req.params.id;
   const tempplayer = req.body.player;
   const tempcomputer = req.body.computer;
   // // Find user by _id
-  User.findOneAndUpdate({ _id:id },{$set:{player: tempplayer},$set:{computer: tempcomputer}}).then(user => {
-    return res.json(user);
-  });
+  User.findOneAndUpdate({
+    _id: id
+  },
+    {
+      $set: {
+        player: tempplayer,
+        computer: tempcomputer
+      }
+    }).then(user => {
+      return res.json(user);
+    });
 });
 
 module.exports = router;
