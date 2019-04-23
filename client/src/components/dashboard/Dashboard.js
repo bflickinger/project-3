@@ -25,8 +25,8 @@ class Dashboard extends Component {
               <div className="container-fluid" id="boards-titlebox">
                 <div className="row scoreboard-row">MEMORY HISTORY</div>
                 <div className="row scoreboard-row">
-                  <div className="col s6">Winning Moves</div>
-                  <div className="col s6">Losing Moves</div>
+                  <div id="winning-moves" className="col s6">Winning Moves</div>
+                  <div id="losing-moves" className="col s6">Losing Moves</div>
                 </div>
               </div>
               <div className="container-fluid" id="boards-box">

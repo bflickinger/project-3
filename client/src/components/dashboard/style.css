@@ -26,19 +26,11 @@
     padding: 10px;
     border-radius: 5px;
     border: solid white;
-    border-width: .5px;
+    border-width: 1px;
     margin: 20px;
     width: 50%;
     margin-left: 25%;
     text-align: center;
- }
-
- #boards-box {
-
- }
- 
- #boards-row {
-
  }
 
  #memory-tracker {
@@ -53,6 +45,14 @@
  .scoreboard-row {
      margin: 0;
  }
+
+ #winning-moves {
+   color: lightseagreen
+ }
+
+ #losing-moves {
+  color: red;
+}
 
 ::-webkit-scrollbar              { background-color: rgba(0,0,0,0); width: 3px}
 ::-webkit-scrollbar-button       { /* 2 */ }
@@ -72,5 +72,14 @@
 @media only screen and (max-width: 802px) {
   #memory-tracker {
     height: calc(25vh);
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #scoreboard, #boards-titlebox {
+    font-size: 16px;
+    margin: 8px;
+    padding: 2px;
+    width: 90%;
   }
 }

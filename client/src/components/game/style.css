@@ -5,7 +5,7 @@
     padding: 10px;
     border-radius: 5px;
     border: solid rgba(0,255,0);
-    border-width: .5px;
+    border-width: 1px;
     margin: 20px;
     width: 50%;
     margin-left: 25%;
@@ -20,13 +20,22 @@
      background-color: black;
      margin-top: 20px;
      border: solid rgba(0,255,0);
-     border-width: .5px;
+     border-width: 1px;
      color: rgba(0,255,0);
  }
 
- @media only screen and (max-width: 400px) {
+ @media only screen and (max-width: 420px) {
     #scoreboard {
       font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    #boards-titlebox { 
+      font-size: 14px;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0;
     }
   }
 
