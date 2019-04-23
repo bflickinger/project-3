@@ -18,6 +18,7 @@ export default (state = initialState, action) => {
     case DELETE_GAME_MEMORY:
       return {
         ...state,
+        memory: []
       };
     case INCREMENT_PLAYER:
       return {
@@ -30,7 +31,6 @@ export default (state = initialState, action) => {
         computer: state.computer + 1
       };
     case SET_SCORE:
-      console.log('Reducer SET_SCORE action.payload ->', action.payload);
       return {
         ...state,
         player: action.payload.player,
