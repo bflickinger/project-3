@@ -57,7 +57,7 @@ class Memorytracker extends Component {
     render() {
 
         return (
-                <div id="memory-tracker" className="poop">
+                <div id="memory-tracker">
                     {console.log('Memory Tracker Render props ->', this.props)}
                 </div>
         );
