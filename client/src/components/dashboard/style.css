@@ -1,5 +1,8 @@
+#main-dash-container {
+  min-height: calc( 100vh - 64px);
+}
+
 #leftside-col {
-    /* min-height: calc( 100vh - 64px); */
     padding-top: 25px;
     padding: 0;
     justify-content: center;
@@ -62,12 +65,12 @@
 ::-webkit-scrollbar-corner       { /* 6 */ }
 ::-webkit-resizer
 
-@media only screen and (max-width: 100em) {
+/* @media only screen and (max-width: 100em) {
     #leftside-col {
-      height: 50%;
+      height: 50vh;
       min-height: 0;  
     }
-  }
+  } */
 
 @media only screen and (max-width: 802px) {
   #memory-tracker {
