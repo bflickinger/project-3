@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 import Navbar from "../layout/Navbar";
 import Activegame from "../game/activegame";
 import Memorytracker from "../game/memorytracker";
@@ -31,8 +32,7 @@ class Dashboard extends Component {
               <div className="container-fluid" id="boards-box">
                 <div className="row" id="boards-row">
                   <div className="col s12" id="boards-col">
-                    {console.log('Dashboard props ->', this.props.game)}
-                    <Memorytracker />
+                    <Memorytracker gameprops={this.props.game}/>
                   </div>
                 </div>
               </div>
@@ -45,13 +45,18 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  game: PropTypes.object.isRequired
+  game: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+  
 };
 
 const mapStateToProps = state => ({
+  auth: state.auth,
   game: state.game
 });
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  {logoutUser}
 )(Dashboard);

@@ -23,6 +23,7 @@ class Navbar extends Component {
     // console.log('reset!');
     this.props.deleteScore(id);
     this.props.deleteMemory(id);
+    // this.props.logoutUser();
   };
 
   componentDidMount() {
@@ -54,6 +55,7 @@ class Navbar extends Component {
             <ul className="hide-on-med-and-down">
               <div id="ai-modal-div">
                 <Modal
+                 options={{dismissible: false, onCloseEnd: () => window.location.assign('/')}}
                   id="ai-reset"
                   header="AI Reset"
                   trigger={

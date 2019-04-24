@@ -8,7 +8,6 @@ class Memorytracker extends Component {
 
     drawTracker = (index) => {
         this.createBtns(index);
-        // this.updateBtns(index);
     }
 
     createBtns = (index) => {
@@ -36,25 +35,25 @@ class Memorytracker extends Component {
 
     updateBtns = (index) => {
         let board = this.props.game.memory[index].board;
-        console.log('Board in Updatebtns ->', board);
+        // console.log('Board in Updatebtns ->', board);
         let boardArray = board.split("");
-        for (let j=0; j < boardArray.length; j++) {
-            console.log('boardArray ->', boardArray[j]);
-            let b = document.getElementById (index + "btn" + j);
-            console.log("button" , index + "btn" + j, b);
+        for (let j = 0; j < boardArray.length; j++) {
+            // console.log('boardArray ->', boardArray[j]);
+            let b = document.getElementById(index + "btn" + j);
+            // console.log("button" , index + "btn" + j, b);
             if (b !== null) {
-                console.log('not null', b);
+                // console.log('not null', b);
                 b.innerHTML = boardArray[j] === "B" ? "&#x265F;" : boardArray[j] === "W" ? "&#x2659;" : " ";
             }
         }
     };
 
     render() {
-
         return (
             <div id="memory-tracker">
-                {console.log('Memory Tracker Render props ->', this.props.game)}
-                {this.props.game && isArray(this.props.game.memory) ? this.props.game.memory.map((memory, index) => (
+                {console.log('Memory Tracker Render props ->', this.props)}
+                {console.log('isArray? ->', isArray(this.props.gameprops.memory))}
+                {isArray(this.props.gameprops.memory) ? this.props.gameprops.memory.map((memory, index) => (
                     this.drawTracker(index)
                 )) : ""}
             </div>
