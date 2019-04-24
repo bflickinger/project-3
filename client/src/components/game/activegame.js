@@ -62,7 +62,7 @@ class Activegame extends Component {
             ii = mvs[idx].t % 3, jj = Math.floor(mvs[idx].t / 3);
         board[i][j] = " "; board[ii][jj] = "B";
         if (needSave) {
-            memory.push({ board: brd, moves: mvs });
+            memory.push({ board: brd, moves: mvs, fullmoves:mvs });
             const id = this.props.auth.user.id;
             this.props.postMemory(id, memory);
             this.props.setMemory(memory);
@@ -137,9 +137,12 @@ class Activegame extends Component {
             this.finish(r);
         } else {
             if (turn === 1) {
-                r = this.computerMoves();
-                if (r < 0) this.nextPlayer();
-                else this.finish(r);
+                setTimeout(() => {
+                    r = this.computerMoves();
+                    if (r < 0) this.nextPlayer();
+                    else this.finish(r);
+                }, 500);
+ 
             }
         }
     }
