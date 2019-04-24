@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Buttoncontrol from "./Buttoncontrol";
 import { Sidenav } from "materialize-css";
-import { Modal } from "react-materialize";
+import { Modal, Button } from "react-materialize";
 import {
   deleteMemory, deleteScore
 } from "../../actions/gameActions";
@@ -152,6 +152,20 @@ class Navbar extends Component {
                   </table>
                 </Modal>
               </div>
+              <div>
+                <Modal
+                  id="elspith-modal"
+                  header="Elspith's Revenge! The AI wins!"
+                  actions={<div id="elspith-footer"><Button id="play-again-button" modal="close">Click to Play Again</Button></div>}
+                  trigger={
+                    <li>
+                      <a href="#">Revenge</a>
+                    </li>
+                  }
+                >
+                  <img src="cyborg.png" alt="Elspith"></img>
+                </Modal>
+              </div>
             </ul>
           </div>
         </nav>
@@ -159,7 +173,7 @@ class Navbar extends Component {
         <ul className="sidenav" id="mobile-demo">
           <div id="ai-modal-div">
             <Modal
-              id="ai-reset"
+              id="ai-reset-modal"
               header="AI Reset"
               trigger={
                 <li>
@@ -253,6 +267,7 @@ class Navbar extends Component {
               </tbody>
             </table>
           </Modal>
+
         </ul>
       </div >
     );
