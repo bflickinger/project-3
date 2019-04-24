@@ -19,7 +19,7 @@ body {
   height: 33vh
 }
 
-.board2 {
+.small-board {
   padding: 0;
   margin: auto;
   width: 20vh;
@@ -43,8 +43,8 @@ body {
   float: left
 }
 
-.button2,
-.empty2 {
+.small-button,
+.small-empty {
   border: 1px solid #000;
   font-size: 5vh;
   margin: 0;
@@ -73,16 +73,16 @@ body {
   background-color: rgb(87, 92, 95);
 }
 
-.button2:focus,
-.button2:active,
-.button2.active,
-.empty2:focus,
-.empty2:active {
+.small-button:focus,
+.small-button:active,
+.small-button.active,
+.small-empty:focus,
+.small-empty:active {
   background-color: rgb(87, 92, 95);
   border: rgba(0,255,0) 2px solid;
 }
-.button2:hover,
-.empty2:hover {
+.small-button:hover,
+.small-empty:hover {
   background-color: rgb(87, 92, 95);
 }
 
@@ -93,7 +93,7 @@ body {
   background: #ccc
 }
 
-.empty2 {
+.small-empty {
   background: #ccc
 }
 

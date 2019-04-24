@@ -5,7 +5,6 @@ import Navbar from "../layout/Navbar";
 import Activegame from "../game/activegame";
 import Memorytracker from "../game/memorytracker";
 import "./style.css";
-import { isArray } from "util";
 
 class Dashboard extends Component {
   render() {
@@ -33,9 +32,7 @@ class Dashboard extends Component {
                 <div className="row" id="boards-row">
                   <div className="col s12" id="boards-col">
                     {console.log('Dashboard props ->', this.props.game)}
-                    {this.props.game && isArray(this.props.game.memory) ? this.props.game.memory.map((memory, index) => (
-                      <Memorytracker key={index} memory={memory}/>
-                    )) : ""}
+                    <Memorytracker />
                   </div>
                 </div>
               </div>
