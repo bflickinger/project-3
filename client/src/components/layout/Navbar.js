@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Buttoncontrol from "./Buttoncontrol";
 import { Sidenav } from "materialize-css";
-import { Modal } from "react-materialize";
+import { Modal, Button } from "react-materialize";
 import {
   deleteMemory, deleteScore
 } from "../../actions/gameActions";
@@ -28,7 +28,7 @@ class Navbar extends Component {
   componentDidMount() {
     let elems = document.querySelectorAll(".sidenav");
     let instance = Sidenav.init(elems);
-    if(this.props.location==="/dashboard"){
+    if (this.props.location === "/dashboard") {
       document.getElementById("aihref1").className = "";
       document.getElementById("aihref2").className = "";
     };
@@ -41,7 +41,7 @@ class Navbar extends Component {
         {/* {console.log('Navbar props ->', this.props)} */}
         <nav>
           <div className="nav-wrapper">
-            <a href={this.props.location}className="brand-logo center">
+            <a href={this.props.location} className="brand-logo center">
               Hexapawn
             </a>
             <a href={this.props.location} data-target="mobile-demo" className="sidenav-trigger">
@@ -52,9 +52,19 @@ class Navbar extends Component {
               history={this.props.history}
             />
             <ul className="hide-on-med-and-down">
-              <li>
-                <a href="#" onClick={this.aiReset} id="aihref1" className="hide">AI Reset</a>
-              </li>
+              <div id="ai-modal-div">
+                <Modal
+                  id="ai-reset"
+                  header="AI Reset"
+                  trigger={
+                    <li>
+                      <a href="#" onClick={this.aiReset} id="aihref1" className="hide">AI Reset</a>
+                    </li>
+                  }
+                >
+                  The AI is now stupid again.  You may have a chance to beat her. Maybe not.
+                </Modal>
+              </div>
               <li>
                 <a
                   href="https://www.youtube.com/watch?v=FWOZmmIUqHg"
@@ -142,14 +152,38 @@ class Navbar extends Component {
                   </table>
                 </Modal>
               </div>
+              <div>
+                <Modal
+                  id="elspith-modal"
+                  header="Elspith's Revenge! The AI wins!"
+                  actions={<div id="elspith-footer"><Button id="play-again-button" modal="close">Click to Play Again</Button></div>}
+                  trigger={
+                    <li>
+                      <a href="#">Revenge</a>
+                    </li>
+                  }
+                >
+                  <img src="cyborg.png" alt="Elspith"></img>
+                </Modal>
+              </div>
             </ul>
           </div>
         </nav>
 
         <ul className="sidenav" id="mobile-demo">
-          <li>
-            <a href="#" onClick={this.aiReset} id="aihref2" className="hide">AI Reset</a>
-          </li>
+          <div id="ai-modal-div">
+            <Modal
+              id="ai-reset-modal"
+              header="AI Reset"
+              trigger={
+                <li>
+                  <a href="#" onClick={this.aiReset} id="aihref2" className="hide">AI Reset</a>
+                </li>
+              }
+            >
+              The AI is now stupid again.  You may have a chance to beat her.
+                </Modal>
+          </div>
           <li>
             <a
               href="https://www.youtube.com/watch?v=FWOZmmIUqHg"
@@ -164,7 +198,7 @@ class Navbar extends Component {
             header="Game Instructions!"
             trigger={
               <li>
-                <a href="w">Game Instructions</a>
+                <a href="w">Game Instructions!</a>
               </li>
             }
           >
@@ -233,8 +267,9 @@ class Navbar extends Component {
               </tbody>
             </table>
           </Modal>
+
         </ul>
-      </div>
+      </div >
     );
   }
 }
