@@ -5,6 +5,7 @@ import {
     incrementComputer, incrementPlayer, postMemory, setMemory, getMemory, getScore, postScore
 } from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
+import { Modal, Button } from "react-materialize";
 import "./style.css";
 
 
@@ -96,12 +97,13 @@ class Activegame extends Component {
             }
             this.props.postMemory(id, memory);
             this.props.setMemory(memory);
+            playBtn.innerHTML = str + "<br />Click to play again.";
+            playBtn.className = "button long"
         } else {
             this.props.incrementComputer();
             this.props.postScore(id, this.props.game);
+            document.getElementById("computer-wins").click();
         }
-        playBtn.innerHTML = str + "<br />Click to play again.";
-        playBtn.className = "button long"
     }
 
     checkFinished = () => {
@@ -240,9 +242,20 @@ class Activegame extends Component {
     render() {
         return (
             <div>
-                {/* {console.log("Activegame Props ",this.props)} */}
                 < Scoreboard player={this.props.game.player} computer={this.props.game.computer} />
                 <div id="hexa">
+                </div>
+                <div>
+                    <Modal
+                    options={{dismissible: false}}
+                    id="elspith-modal"
+                    header="Elspith's Revenge! The AI wins!"
+                    actions={<div id="elspith-footer"><Button id="play-again-button" modal="close" onClick={this.restart}>Click to Play Again</Button></div>}
+                    trigger={<button id="computer-wins" className="hide">Revenge</button>
+                    }
+                    >
+                    <img src="cyborg.png" alt="Elspith"></img>
+                    </Modal>
                 </div>
             </div>
         );
