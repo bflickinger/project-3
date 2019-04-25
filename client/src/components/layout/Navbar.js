@@ -53,7 +53,7 @@ class Navbar extends Component {
             <ul className="hide-on-med-and-down">
               <div id="ai-modal-div">
                 <Modal
-                 options={{dismissible: false, onCloseEnd: () => window.location.assign('/')}}
+                  options={{dismissible: false, onCloseEnd: () => window.location.assign('/')}}
                   id="ai-reset"
                   header="AI Reset"
                   trigger={
@@ -150,20 +150,6 @@ class Navbar extends Component {
                       </tr>
                     </tbody>
                   </table>
-                </Modal>
-              </div>
-              <div>
-                <Modal
-                  id="elspith-modal"
-                  header="Elspith's Revenge! The AI wins!"
-                  actions={<div id="elspith-footer"><Button id="play-again-button" modal="close">Click to Play Again</Button></div>}
-                  trigger={
-                    <li>
-                      <a href="#">Revenge</a>
-                    </li>
-                  }
-                >
-                  <img src="cyborg.png" alt="Elspith"></img>
                 </Modal>
               </div>
             </ul>

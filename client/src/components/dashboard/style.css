@@ -37,7 +37,7 @@
  }
 
  #memory-tracker {
-    height: calc(75vh - 50px);
+    height: calc(83vh - 50px);
     overflow-y: hidden;
  }
 
@@ -72,17 +72,35 @@
     }
   } */
 
-@media only screen and (max-width: 802px) {
+@media only screen and (max-width: 992px) {
   #memory-tracker {
     height: calc(25vh);
   }
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 992px) {
   #scoreboard, #boards-titlebox {
     font-size: 16px;
-    margin: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
     padding: 2px;
-    width: 90%;
+    width: 50%;
+  }
+  #memory-tracker {
+    height: 40vh;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  #scoreboard, #boards-titlebox {
+    font-size: 16px;
+    margin: 5px;
+    padding: 2px;
+    width: 98%;
+  }
+  #memory-tracker {
+    height: 40vh;
   }
 }
