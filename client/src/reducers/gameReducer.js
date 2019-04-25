@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     case SET_GAME_MEMORY:
       return {
         ...state,
-        memory: action.payload,
+        memory: action.payload
       };
     case RESET_GAME_MEMORY:
       return {

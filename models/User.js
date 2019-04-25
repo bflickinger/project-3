@@ -27,7 +27,7 @@ const UserSchema = new Schema({
     type: Number,
     default: 0
   },
-  memory: [ { board: String , moves: [ { f: Number, t: Number} ] , fullmoves: [ { f: Number, t: Number} ] }]
+  memory: [ { board: String , moves: [ { f: Number, t: Number} ] }]
 });
 
 module.exports = User = mongoose.model("users", UserSchema);

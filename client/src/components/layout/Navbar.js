@@ -20,10 +20,8 @@ class Navbar extends Component {
   aiReset = f => {
     f.preventDefault();
     let id = this.props.auth.user.id;
-    // console.log('reset!');
     this.props.deleteScore(id);
     this.props.deleteMemory(id);
-    // this.props.logoutUser();
   };
 
   componentDidMount() {
@@ -176,6 +174,7 @@ class Navbar extends Component {
           <div id="ai-modal-div">
             <Modal
               id="ai-reset-modal"
+              options={{dismissible: false, onCloseEnd: () => window.location.assign('/')}}
               header="AI Reset"
               trigger={
                 <li>

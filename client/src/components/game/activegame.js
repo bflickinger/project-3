@@ -62,7 +62,7 @@ class Activegame extends Component {
             ii = mvs[idx].t % 3, jj = Math.floor(mvs[idx].t / 3);
         board[i][j] = " "; board[ii][jj] = "B";
         if (needSave) {
-            memory.push({ board: brd, moves: mvs, fullmoves:mvs });
+            memory.push({ board: brd, moves:mvs });
             const id = this.props.auth.user.id;
             this.props.postMemory(id, memory);
             this.props.setMemory(memory);
@@ -156,8 +156,6 @@ class Activegame extends Component {
 
     btnHandle = (e) => {
         memory = this.props.game.memory;
-        // console.log('activegame local memory ->', memory);
-        // console.log('btnHandle props ->', this.props.game.memory);
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
 
