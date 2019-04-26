@@ -24,7 +24,7 @@
      color: rgba(0,255,0);
  }
 
- #elspith-modal {
+ #elspeth-modal {
     /* background-color: rgba(0,0,0,0); */
     border: solid red;
     border-width: 1px;
@@ -34,11 +34,11 @@
     color: red;
 }
 
-#elspith-footer {
+#elspeth-footer {
     text-align: center;
 }
 
-#elspith-jpg {
+#elspeth-jpg {
     height: 60%;
     width: 60%;
 }

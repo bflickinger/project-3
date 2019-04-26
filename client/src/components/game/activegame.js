@@ -113,7 +113,7 @@ class Activegame extends Component {
             this.props.incrementComputer();
             this.props.postScore(id, this.props.game);
             document.getElementById("computer-wins").click();
-            document.getElementById('title').innerHTML = "Elspith's Revenge!";
+            document.getElementById('title').innerHTML = "Elspeth's Revenge!";
             fadeIn();
         }
     }
@@ -260,13 +260,13 @@ class Activegame extends Component {
                 <div>
                     <Modal
                     options={{dismissible: false}}
-                    id="elspith-modal"
-                    header="Elspith's Revenge! The AI wins!"
-                    actions={<div id="elspith-footer"><Button id="play-again-button" modal="close" onClick={this.restart}>Click to Play Again</Button></div>}
+                    id="elspeth-modal"
+                    header="Elspeth's Revenge! The AI wins!"
+                    actions={<div id="elspeth-footer"><Button id="play-again-button" modal="close" onClick={this.restart}>Click to Play Again</Button></div>}
                     trigger={<button id="computer-wins" className="hide">Revenge</button>
                     }
                     >
-                    <img id="elspith-jpg" src="cyborg.png" alt="Elspith"></img>
+                    <img id="elspeth-jpg" src="cyborg.png" alt="Elspeth"></img>
                     </Modal>
                 </div>
             </div>
