@@ -47,7 +47,7 @@ class Memorytracker extends Component {
             // console.log("button" , index + "btn" + j, b);
             if (b !== null) {
                 // console.log('not null', b);
-                b.innerHTML = boardArray[j] === "B" ? "&#x265F;" : boardArray[j] === "W" ? "&#x2659;" : " ";
+                b.innerHTML = boardArray[j] === "B" ? '<img class="pawnblack" src="pawnblack.png">' : boardArray[j] === "W" ? '<img class="pawnwhite" src="pawnwhite.png">' : " ";
                 //put image here?                        ^
             }
         }
