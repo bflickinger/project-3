@@ -1,4 +1,4 @@
-nav {
+#main-navbar {
     background-color: rgba(0,0,0,0.0);
 }
 
@@ -30,6 +30,7 @@ nav {
 
 .modal-footer {
     background-color: black !important;
+    width: 99% !important;
 }
 
 .modal {
@@ -43,33 +44,12 @@ nav {
     max-height: 80%;
 }
 
-#elspith-modal {
-    /* background-color: rgba(0,0,0,0); */
-    border: solid red;
-    border-width: 1px;
-    height: 100%;
-    width: 400px;
-    text-align: center;
-    color: red;
-}
-
-#elspith-footer {
-    text-align: center;
-}
-
-#play-again-button {
-    border: solid red;
-    border-width: 1px;
-    color: red;
-    
-}
-
-#play-again-button:hover {
-    background-color: darkred;
+#title {
+    opacity: 1;
+    transition: 3s opacity;
 }
 
 .waves-green {
-    /* background-color: red; */
     color: rgba(0,255,0);
 }
 

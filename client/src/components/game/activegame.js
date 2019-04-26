@@ -13,6 +13,13 @@ import "./style.css";
 let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }
 
+let fadeIn =() => {
+    document.getElementById('title').style.opacity = '1';
+    document.getElementById('title').style.color = 'red';
+    document.getElementById('main-navbar').style.background = 'rgba(0,0,0,0.5)';
+}
+
+
 class Activegame extends Component {
  
     componentDidMount = () => {
@@ -106,6 +113,8 @@ class Activegame extends Component {
             this.props.incrementComputer();
             this.props.postScore(id, this.props.game);
             document.getElementById("computer-wins").click();
+            document.getElementById('title').innerHTML = "Elspith's Revenge!";
+            fadeIn();
         }
     }
 
@@ -160,13 +169,16 @@ class Activegame extends Component {
     }
 
     btnHandle = (e) => {
+        
         memory = this.props.game.memory;
+
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
 
         if (clicks.first === null && board[ti][tj] === "W") {
             clicks.first = e.target;
             clicks.first.className += " marked"
+            console.log()
         } else if (clicks.first !== null && board[ti][tj] === "W") {
             clicks.first.className = clicks.first.className.split(" ")[0];
             clicks.first = clicks.second = null;
@@ -190,12 +202,11 @@ class Activegame extends Component {
         let b;
         for (let j = 0; j < 3; j++) {
             for (let i = 0; i < 3; i++) {
-                b = document.getElementById("btn" + (i + j * 3));
-                b.innerHTML = board[i][j] === "B" ? "&#x265F;" : board[i][j] === "W" ? "&#x2659;" : " ";
+                b = document.getElementById("btn" + (i + j * 3))
+                b.innerHTML = board[i][j] === "B" ? '<img class="pawnblack" src="pawnblack.png">' : board[i][j] === "W" ? '<img class="pawnwhite" src="pawnwhite.png">' : " ";
             }
         }
     };
-
 
     restart = () => {
         turn = 0;
@@ -255,7 +266,7 @@ class Activegame extends Component {
                     trigger={<button id="computer-wins" className="hide">Revenge</button>
                     }
                     >
-                    <img src="cyborg.png" alt="Elspith"></img>
+                    <img id="elspith-jpg" src="cyborg.png" alt="Elspith"></img>
                     </Modal>
                 </div>
             </div>

@@ -24,4 +24,39 @@
      color: rgba(0,255,0);
  }
 
+ #elspith-modal {
+    /* background-color: rgba(0,0,0,0); */
+    border: solid red;
+    border-width: 1px;
+    height: 100%;
+    width: 400px;
+    text-align: center;
+    color: red;
+}
+
+#elspith-footer {
+    text-align: center;
+}
+
+#elspith-jpg {
+    height: 60%;
+    width: 60%;
+}
+
+#play-again-button {
+    border: solid red;
+    border-width: 1px;
+    color: red;
+}
+
+#play-again-button:hover {
+    background-color: darkred;
+}
+
+.pawnblack, .pawnwhite {
+    height: 100%;
+    pointer-events: none;
+
+}
+
     

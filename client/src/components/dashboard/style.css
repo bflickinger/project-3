@@ -57,26 +57,13 @@
   color: red;
 }
 
-::-webkit-scrollbar              { background-color: rgba(0,0,0,0); width: 3px}
+::-webkit-scrollbar              { background-color: rgba(0,0,0,0); width: 4px}
 ::-webkit-scrollbar-button       { /* 2 */ }
 ::-webkit-scrollbar-track        { /* 3 */ }
 ::-webkit-scrollbar-track-piece  { /* 4 */ }
-::-webkit-scrollbar-thumb        { background-color: rgba(0,255,0);; border-radius: 5px}
+::-webkit-scrollbar-thumb        { background-color: rgba(0,255,0); border-radius: 5px}
 ::-webkit-scrollbar-corner       { /* 6 */ }
 ::-webkit-resizer
-
-/* @media only screen and (max-width: 100em) {
-    #leftside-col {
-      height: 50vh;
-      min-height: 0;  
-    }
-  } */
-
-@media only screen and (max-width: 992px) {
-  #memory-tracker {
-    height: calc(25vh);
-  }
-}
 
 @media only screen and (max-width: 992px) {
   #scoreboard, #boards-titlebox {
@@ -100,7 +87,7 @@
     padding: 2px;
     width: 98%;
   }
-  #memory-tracker {
-    height: 40vh;
+  #elspith-modal {
+    width: 76%;
   }
 }
