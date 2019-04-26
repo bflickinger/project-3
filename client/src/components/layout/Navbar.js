@@ -55,14 +55,14 @@ class Navbar extends Component {
                 <Modal
                   options={{dismissible: false, onCloseEnd: () => window.location.assign('/')}}
                   id="ai-reset"
-                  header="AI Reset"
+                  header="AI memory cleared!"
                   trigger={
                     <li>
                       <a href="#" onClick={this.aiReset} id="aihref1" className="hide">AI Reset</a>
                     </li>
                   }
                 >
-                  The AI is now stupid again.  You may have a chance to beat her. Maybe not.
+                  The AI has forgotten everything.  Maybe you can win again.
                 </Modal>
               </div>
               <li>
@@ -161,14 +161,14 @@ class Navbar extends Component {
             <Modal
               id="ai-reset-modal"
               options={{dismissible: false, onCloseEnd: () => window.location.assign('/')}}
-              header="AI Reset"
+              header="AI memory cleared!"
               trigger={
                 <li>
                   <a href="#" onClick={this.aiReset} id="aihref2" className="hide">AI Reset</a>
                 </li>
               }
             >
-              The AI is now stupid again.  You may have a chance to beat her.
+              The AI has forgotten everything.  Maybe you can win again.
                 </Modal>
           </div>
           <li>
