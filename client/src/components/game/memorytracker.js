@@ -10,6 +10,10 @@ class Memorytracker extends Component {
         this.createBtns(index);
     }
 
+    drawLine = () => {
+        let line = document.createElement("svg").setAttribute("width: 300", "height=100")
+    }
+
     createBtns = (index) => {
         if (!document.getElementById(index)) {
             let b, d = document.createElement("div"), v = false, x = document.getElementById("memory-tracker");
@@ -44,6 +48,7 @@ class Memorytracker extends Component {
             if (b !== null) {
                 // console.log('not null', b);
                 b.innerHTML = boardArray[j] === "B" ? "&#x265F;" : boardArray[j] === "W" ? "&#x2659;" : " ";
+                //put image here?                        ^
             }
         }
     };
@@ -51,6 +56,7 @@ class Memorytracker extends Component {
     render() {
         return (
             <div id="memory-tracker">
+            {console.log('this.props.gamprops.memory -> ', this.props.gameprops.memory)}
                 {isArray(this.props.gameprops.memory) ? this.props.gameprops.memory.map((memory, index) => (
                     this.drawTracker(index)
                 )) : ""}

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Modal, Button } from "react-materialize";
 import {
-    incrementComputer, incrementPlayer, postMemory, setMemory, getMemory, getScore, postScore
+    incrementComputer, incrementPlayer, postMemory, setMemory, getMemory, getScore, postScore, postBoard
 } from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
-import { Modal, Button } from "react-materialize";
+
 import "./style.css";
 
 
@@ -65,8 +66,10 @@ class Activegame extends Component {
         if (needSave) {
             memory.push({ board: brd, moves:mvs });
             const id = this.props.auth.user.id;
+            console.log(this.props,mvs);
             this.props.postMemory(id, memory);
             this.props.setMemory(memory);
+            this.props.postBoard(memory.slice(-1)[0]);
         }
         this.updateBtns();
         return -1;
@@ -271,5 +274,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-    mapStateToProps, { incrementPlayer, incrementComputer, postMemory, setMemory, getMemory, getScore, postScore }
+    mapStateToProps, {
+         incrementPlayer, incrementComputer, postMemory, setMemory, getMemory, getScore, postScore, postBoard
+        }
 )(Activegame);

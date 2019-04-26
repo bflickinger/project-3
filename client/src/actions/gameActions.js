@@ -110,3 +110,11 @@ export function resetMemory() {
     type: RESET_GAME_MEMORY
   }
 }
+
+export function postBoard(board) {
+  return (dispatch) => {
+    axios.post('/api/users/boards/', board)
+      .then((res) => { return (res) })
+      .catch((res) => { return (res) })
+  }
+}

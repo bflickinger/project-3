@@ -11,6 +11,7 @@ const validateLoginInput = require("../../validation/login");
 
 // Load User model
 const User = require("../../models/User");
+const Board = require("../../models/Board");
 
 // @route POST api/users/register
 // @desc Register user
@@ -122,7 +123,7 @@ router.post("/memory/:id", (req, res) => {
 router.get("/score/:id", async (req, res) => {
   const id = req.params.id;
   User.findOne({ _id: id }).then(user => {
-    console.log("GET Score -> ", user);
+    // console.log("GET Score -> ", user);
     return res.json(user);
   });
 });
@@ -150,7 +151,6 @@ router.post("/score/:id", (req, res) => {
 
 router.post("/resetscore/:id", (req, res) => {
   const id = req.params.id;
-  console.log('resetscore db fired', id);
   // // Find user by _id
   User.findOneAndUpdate({
     _id: id
@@ -171,7 +171,6 @@ router.post("/resetscore/:id", (req, res) => {
 
 router.post("/resetmemory/:id", (req, res) => {
   const id = req.params.id;
-  console.log('resetmemory fired', req.body);
   // // Find user by _id
   User.findOneAndUpdate({
     _id: id
@@ -185,6 +184,31 @@ router.post("/resetmemory/:id", (req, res) => {
     }).catch(user => {
       return res.json(user);
     });
+});
+
+router.post("/boards/", (req, res) => {
+  console.log('POST full mem ->',req.body.board);
+  Board.findOne({
+    board: req.body.board
+  }).then(board => {
+    if (board) {
+      console.log('board already exists...', board);
+      return res.status(404);
+    } else {
+      console.log('creating new board...');
+      const newBoard = new Board({
+        board: req.body.board,
+        moves: req.body.moves
+      });
+      newBoard
+      .save()
+      .then(board => {
+        res.json(board);
+        console.log('fullMem saved...');
+      })
+      .catch(err => console.log(err));
+    }
+  });
 });
 
 module.exports = router;
