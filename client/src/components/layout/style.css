@@ -1,4 +1,4 @@
-nav {
+#main-navbar {
     background-color: rgba(0,0,0,0.0);
 }
 
@@ -42,6 +42,11 @@ nav {
 
 #instructions {
     max-height: 80%;
+}
+
+#title {
+    opacity: 1;
+    transition: 3s opacity;
 }
 
 .waves-green {

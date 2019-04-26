@@ -10,6 +10,14 @@ import {
 } from "../../actions/gameActions";
 import "./style.css";
 
+window.onload = function() {
+  window.setTimeout(fadeout, 4000);
+}
+
+let fadeout =() => {
+  document.getElementById('title').style.opacity = '0';
+}
+
 class Navbar extends Component {
 
   onLogoutClick = e => {
@@ -38,9 +46,9 @@ class Navbar extends Component {
     return (
       <div>
         {/* {console.log('Navbar props ->', this.props)} */}
-        <nav>
+        <nav id="main-navbar">
           <div className="nav-wrapper">
-            <a href={this.props.location} className="brand-logo center">
+            <a href={this.props.location} id="title" className="brand-logo center">
               Hexapawn
             </a>
             <a href={this.props.location} data-target="mobile-demo" className="sidenav-trigger">
@@ -109,7 +117,7 @@ class Navbar extends Component {
                     <thead>
                       <tr>
                         <th />
-                        <th>Rules</th>
+                        <th><h5>Rules</h5></th>
                       </tr>
                     </thead>
                     <tbody>

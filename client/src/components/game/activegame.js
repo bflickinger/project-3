@@ -12,8 +12,12 @@ import "./style.css";
 let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }
 
-const BP = '<img id="blackpawn" src="blackpawn.png">'
-const WP = '<img id="whitepawn" src="whitepawn.png">'
+let fadeIn =() => {
+    document.getElementById('title').style.opacity = '1';
+    document.getElementById('title').style.color = 'red';
+    document.getElementById('main-navbar').style.background = 'rgba(0,0,0,0.5)';
+}
+
 
 class Activegame extends Component {
  
@@ -106,6 +110,8 @@ class Activegame extends Component {
             this.props.incrementComputer();
             this.props.postScore(id, this.props.game);
             document.getElementById("computer-wins").click();
+            document.getElementById('title').innerHTML = "Elspith's Revenge!";
+            fadeIn();
         }
     }
 
