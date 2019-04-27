@@ -10,8 +10,18 @@ import Scoreboard from "./scoreboard";
 import "./style.css";
 
 
-let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
+let computerwin = false, board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }
+
+window.onload = function() {
+    document.getElementById('title').innerHTML = "Hexapawn";
+    document.getElementById('title').style.color = 'white';
+    document.getElementById('main-navbar').style.background = 'rgba(0,0,0,0)'
+    }
+    
+let fadeout =() => {
+    document.getElementById('title').style.opacity = '0';
+    }
 
 let fadeIn =() => {
     document.getElementById('title').style.opacity = '1';
@@ -109,12 +119,14 @@ class Activegame extends Component {
             this.props.setMemory(memory);
             playBtn.innerHTML = str + "<br />Click to play again.";
             playBtn.className = "button long"
+            computerwin = false;
         } else {
             this.props.incrementComputer();
             this.props.postScore(id, this.props.game);
             document.getElementById("computer-wins").click();
-            document.getElementById('title').innerHTML = "Elspeth's Revenge!";
-            fadeIn();
+            window.setTimeout(fadeout, 0);
+            computerwin = true;
+
         }
     }
 
@@ -213,6 +225,10 @@ class Activegame extends Component {
         this.createBoard();
         this.updateBtns();
         playBtn.className += " hide";
+        if (computerwin) {
+            document.getElementById('title').innerHTML = "Elspeth's Revenge!";
+            fadeIn();
+        };
     };
 
     createBoard = () => {
