@@ -1,3 +1,25 @@
+# Hexapawn
+
+replace me...
+
+## Technologies Used
+
+1. React.js
+2. MongoDB
+3. Mongoose
+4. Express
+5. Node
+6. Passport for authentication
+7. Redux
+8. Materialize
+9. Axios
+
+## Team members
+
+1. Barry Flickinger - Back-end
+2. Van Patterson - Front-end
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
