@@ -56,7 +56,6 @@ class Memorytracker extends Component {
     render() {
         return (
             <div id="memory-tracker">
-            {console.log('this.props.gamprops.memory -> ', this.props.gameprops.memory)}
                 {isArray(this.props.gameprops.memory) ? this.props.gameprops.memory.map((memory, index) => (
                     this.drawTracker(index)
                 )) : ""}
