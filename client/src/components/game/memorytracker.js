@@ -16,20 +16,22 @@ class Memorytracker extends Component {
 
     createBtns = (index) => {
         if (!document.getElementById(index)) {
-            let b, d = document.createElement("div"), v = false, x = document.getElementById("memory-tracker");
-            d.className += "small-board";
-            d.id = index;
-            x.appendChild(d);
+            let board, div = document.createElement("div"), v = false, target = document.getElementById("memory-tracker");
+            div.className += "small-board";
+            div.id = index;
+            console.log('div->',div);
+            console.log('target->',target);
+            target.appendChild(div);
             for (let j = 0; j < 3; j++) {
                 for (let i = 0; i < 3; i++) {
-                    b = document.createElement("button");
-                    b.id = index + "btn" + (i + j * 3);
-                    b.i = i; b.j = j;
-                    b.addEventListener("click", this.btnHandle, false);
-                    b.appendChild(document.createTextNode(""));
-                    d.appendChild(b);
-                    if (v) b.className = "small-button"
-                    else b.className = "small-empty";
+                    board = document.createElement("button");
+                    board.id = index + "btn" + (i + j * 3);
+                    board.i = i; board.j = j;
+                    board.addEventListener("click", this.btnHandle, false);
+                    board.appendChild(document.createTextNode(""));
+                    div.appendChild(board);
+                    if (v) board.className = "small-button"
+                    else board.className = "small-empty";
                     v = !v;
                 }
             }
@@ -56,7 +58,7 @@ class Memorytracker extends Component {
     render() {
         return (
             <div id="memory-tracker">
-                {isArray(this.props.gameprops.memory) ? this.props.gameprops.memory.map((memory, index) => (
+                {isArray(this.props.game.memory) ? this.props.game.memory.map((memory, index) => (
                     this.drawTracker(index)
                 )) : ""}
             </div>
