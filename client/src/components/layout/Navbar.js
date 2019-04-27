@@ -10,13 +10,6 @@ import {
 } from "../../actions/gameActions";
 import "./style.css";
 
-window.onload = function() {
-  window.setTimeout(fadeout, 4000);
-}
-
-let fadeout =() => {
-  document.getElementById('title').style.opacity = '0';
-}
 
 class Navbar extends Component {
 
