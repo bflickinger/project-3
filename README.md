@@ -2,7 +2,7 @@
 
 replace me...
 
-Heroku Demo:  https://shrouded-ravine-60693.herokuapp.com/dashboard
+Heroku Demo:  https://shrouded-ravine-60693.herokuapp.com/
 
 ## Technologies Used
 
