@@ -10,7 +10,7 @@ import Scoreboard from "./scoreboard";
 import "./style.css";
 
 
-let board, playBtn, turn, memory = [], lastMove = { brd: "", mvi: 0 },
+let board, playBtn, turn, localMemory = [], lastMove = { brd: "", mvi: 0 },
     clicks = { first: null, second: null }
 
 let fadeIn =() => {
@@ -52,9 +52,9 @@ class Activegame extends Component {
 
     computerMoves = () => {
         let brd = this.getBoard(), mvs, needSave = false;
-        for (let i = 0; i < memory.length; i++) {
-            if (memory[i].board === brd) {
-                mvs = memory[i].moves;
+        for (let i = 0; i < localMemory.length; i++) {
+            if (localMemory[i].board === brd) {
+                mvs = localMemory[i].moves;
                 break;
             }
         }
@@ -71,12 +71,12 @@ class Activegame extends Component {
             ii = mvs[idx].t % 3, jj = Math.floor(mvs[idx].t / 3);
         board[i][j] = " "; board[ii][jj] = "B";
         if (needSave) {
-            memory.push({ board: brd, moves:mvs });
+            localMemory.push({ board: brd, moves:mvs });
             const id = this.props.auth.user.id;
             console.log(this.props,mvs);
-            this.props.postMemory(id, memory);
-            this.props.setMemory(memory);
-            this.props.postBoard(memory.slice(-1)[0]);
+            this.props.postMemory(id, localMemory);
+            this.props.setMemory(localMemory);
+            this.props.postBoard(localMemory.slice(-1)[0]);
         }
         this.updateBtns();
         return -1;
@@ -99,14 +99,14 @@ class Activegame extends Component {
             str = "You win!";
             this.props.incrementPlayer();
             this.props.postScore(id, this.props.game);
-            for (let i = 0; i < memory.length; i++) {
-                if (memory[i].board === lastMove.brd) {
-                    memory[i].moves.splice(lastMove.mvi, 1);
+            for (let i = 0; i < localMemory.length; i++) {
+                if (localMemory[i].board === lastMove.brd) {
+                    localMemory[i].moves.splice(lastMove.mvi, 1);
                     break;
                 }
             }
-            this.props.postMemory(id, memory);
-            this.props.setMemory(memory);
+            this.props.postMemory(id, localMemory);
+            this.props.setMemory(localMemory);
             playBtn.innerHTML = str + "<br />Click to play again.";
             playBtn.className = "button long"
         } else {
@@ -170,7 +170,7 @@ class Activegame extends Component {
 
     btnHandle = (e) => {
         
-        memory = this.props.game.memory;
+        localMemory = this.props.game.memory;
 
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
