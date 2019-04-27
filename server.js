@@ -8,8 +8,7 @@ const users = require("./routes/api/users");
 const app = express();
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  // app.use(express.static(path.join(__dirname, 'build')));
+  app.use(express.static(__dirname, '/client/build'));
 
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '/client/build/index.html'), function(err) {
