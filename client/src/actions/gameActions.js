@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import {
-  SET_GAME_MEMORY, RESET_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
+  SET_GAME_MEMORY, RESET_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE, SET_BOARD
 } from "../actions/types";
 
 //Memory Actions
@@ -14,7 +14,7 @@ export function getMemory(id) {
         dispatch(setMemory(res.data));
         return res.data;
       })
-      .catch((res) => { return (res) })
+      .catch((err) => { return (err) })
   }
 }
 export function setMemory(memory) {
@@ -27,8 +27,8 @@ export function setMemory(memory) {
 export function postMemory(id, memory) {
   return (dispatch) => {
     axios.post('/api/users/memory/' + id, memory)
-      .then((response) => { return (response) })
-      .catch((response) => { return (response) })
+      .then((res) => { return (res) })
+      .catch((err) => { return (err) })
   }
 }
 
@@ -42,7 +42,7 @@ export function getScore(id) {
         dispatch(setScore(res.data));
         return res.data;
       })
-      .catch((res) => { return (res) })
+      .catch((err) => { return (err) })
   }
 }
 
@@ -57,7 +57,7 @@ export function postScore(id, scores) {
   return (dispatch) => {
     axios.post('/api/users/score/' + id, scores)
       .then((res) => { return (res) })
-      .catch((res) => { return (res) })
+      .catch((err) => { return (err) })
   }
 }
 
@@ -81,13 +81,13 @@ export function deleteScore(id) {
         dispatch(resetScore());
         return res.data;
       })
-      .catch((res) => { return (res) })
+      .catch((err) => { return (err) })
   }
 }
 
 export function resetScore() {
   // console.log('resetScore redux fired !')
-  return{
+  return {
     type: RESET_SCORE
   }
 }
@@ -100,13 +100,13 @@ export function deleteMemory(id) {
         dispatch(resetMemory());
         return res.data;
       })
-      .catch((res) => { return (res) })
+      .catch((err) => { return (err) })
   }
 }
 
 export function resetMemory() {
   // console.log('resetMemory redux fired !')
-  return{
+  return {
     type: RESET_GAME_MEMORY
   }
 }
@@ -115,6 +115,27 @@ export function postBoard(board) {
   return (dispatch) => {
     axios.post('/api/users/boards/', board)
       .then((res) => { return (res) })
-      .catch((res) => { return (res) })
+      .catch((err) => { return (err) })
+  }
+}
+
+export function getFullMemory(memory) {
+  return (dispatch) => {
+    // console.log('Board ->', memory);
+    axios.get('/api/users/boards/'+ memory.board)
+      .then((res) => {
+        dispatch(setBoard(res.data))
+         console.log('Full moves ->', res.data);
+         return res.data; 
+        })
+      .catch((err) => { return (err) })
+  }
+}
+
+export function setBoard(data) {
+  console.log('setBoard fired', data);
+  return {
+    type: SET_BOARD,
+    payload: data
   }
 }

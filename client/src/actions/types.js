@@ -12,3 +12,5 @@ export const INCREMENT_PLAYER = 'INCREMENT_PLAYER';
 export const INCREMENT_COMPUTER = 'INCREMENT_COMPUTER';
 export const SET_SCORE = 'SET_SCORE';
 export const RESET_SCORE = 'RESET_SCORE';
+
+export const SET_BOARD = 'SET_BOARD';

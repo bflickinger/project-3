@@ -86,7 +86,7 @@ class Activegame extends Component {
         if (needSave) {
             localMemory.push({ board: brd, moves:mvs });
             const id = this.props.auth.user.id;
-            console.log(this.props,mvs);
+            // console.log(this.props,mvs);
             this.props.postMemory(id, localMemory);
             this.props.setMemory(localMemory);
             this.props.postBoard(localMemory.slice(-1)[0]);
@@ -184,18 +184,17 @@ class Activegame extends Component {
     }
 
     btnHandle = (e) => {
-        console.log('btnHandle props ->',this.props.game.memory);
+        // console.log('btnHandle props ->',this.props.game.memory);
         if(isArray(this.props.game.memory)) {
             localMemory = this.props.game.memory;
         }  
-        console.log('localMemory ->',localMemory);
+        // console.log('localMemory ->',localMemory);
         if (turn > 0) return;
         let ti = e.target.i, tj = e.target.j;
 
         if (clicks.first === null && board[ti][tj] === "W") {
             clicks.first = e.target;
             clicks.first.className += " marked"
-            console.log()
         } else if (clicks.first !== null && board[ti][tj] === "W") {
             clicks.first.className = clicks.first.className.split(" ")[0];
             clicks.first = clicks.second = null;

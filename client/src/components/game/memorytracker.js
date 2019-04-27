@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { isArray } from "util";
+import {
+    getFullMemory
+} from "../../actions/gameActions";
 import "./style.css";
 
 class Memorytracker extends Component {
@@ -19,8 +22,8 @@ class Memorytracker extends Component {
             let board, div = document.createElement("div"), v = false, target = document.getElementById("memory-tracker");
             div.className += "small-board";
             div.id = index;
-            console.log('div->', div);
-            console.log('target->', target);
+            // console.log('div->', div);
+            // console.log('target->', target);
             if (target !== null) {
                 target.appendChild(div);
                 for (let j = 0; j < 3; j++) {
@@ -43,16 +46,17 @@ class Memorytracker extends Component {
 
     updateBtns = (index) => {
         let board = this.props.game.memory[index].board;
-        // console.log('Board in Updatebtns ->', board);
+        let remainingMoves = this.props.game.memory[index].moves;
+        console.log('Current board ->', board);
+        console.log('Current moves ->', remainingMoves);
+        this.props.getFullMemory(this.props.game.memory[index]);
+        console.log('Fullmoves board ->', this.props.game.board);
+        console.log('Fullmove moves', this.props.game.moves);
         let boardArray = board.split("");
         for (let j = 0; j < boardArray.length; j++) {
-            // console.log('boardArray ->', boardArray[j]);
             let b = document.getElementById(index + "btn" + j);
-            // console.log("button" , index + "btn" + j, b);
             if (b !== null) {
-                // console.log('not null', b);
                 b.innerHTML = boardArray[j] === "B" ? '<img class="pawnblack" src="pawnblack.png">' : boardArray[j] === "W" ? '<img class="pawnwhite" src="pawnwhite.png">' : " ";
-                //put image here?                        ^
             }
         }
     };
@@ -77,5 +81,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-    mapStateToProps
+    mapStateToProps, {
+        getFullMemory
+    }
 )(Memorytracker);

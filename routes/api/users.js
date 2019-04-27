@@ -187,12 +187,12 @@ router.post("/resetmemory/:id", (req, res) => {
 });
 
 router.post("/boards/", (req, res) => {
-  console.log('POST full mem ->',req.body.board);
+  console.log('POST board ->', req.body.board);
   Board.findOne({
     board: req.body.board
   }).then(board => {
     if (board) {
-      console.log('board already exists...', board);
+      console.log('board already exists...');
       return res.status(404);
     } else {
       console.log('creating new board...');
@@ -201,14 +201,25 @@ router.post("/boards/", (req, res) => {
         moves: req.body.moves
       });
       newBoard
-      .save()
-      .then(board => {
-        res.json(board);
-        console.log('fullMem saved...');
-      })
-      .catch(err => console.log(err));
+        .save()
+        .then(board => {
+          res.json(board);
+          console.log('fullMem saved...');
+        })
+        .catch(err => console.log(err));
     }
   });
+});
+
+router.get("/boards/:id", async (req, res) => {
+  console.log(".GET data -> ", req.params.id);
+  Board.findOne({
+    board: req.params.id
+  }).then(data => {
+    console.log('data', data);
+    return res.json(data);
+  })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

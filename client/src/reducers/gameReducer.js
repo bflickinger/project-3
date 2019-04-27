@@ -1,11 +1,13 @@
 import {
-  SET_GAME_MEMORY, RESET_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE
+  SET_GAME_MEMORY, RESET_GAME_MEMORY, INCREMENT_PLAYER, INCREMENT_COMPUTER, SET_SCORE, RESET_SCORE, SET_BOARD
 } from "../actions/types";
 
 const initialState = {
   memory: {},
   computer: 0,
-  player: 0
+  player: 0,
+  board: "",
+  moves: []
 };
 
 export default (state = initialState, action) => {
@@ -42,6 +44,13 @@ export default (state = initialState, action) => {
         player: 0,
         computer: 0
       };
+    case SET_BOARD:
+    // console.log('Set Board Reducer fired');
+      return {
+        ...state,
+        board: action.payload.board,
+        moves: action.payload.moves
+      }
     default:
       return state;
   }
