@@ -19,20 +19,22 @@ class Memorytracker extends Component {
             let board, div = document.createElement("div"), v = false, target = document.getElementById("memory-tracker");
             div.className += "small-board";
             div.id = index;
-            console.log('div->',div);
-            console.log('target->',target);
-            target.appendChild(div);
-            for (let j = 0; j < 3; j++) {
-                for (let i = 0; i < 3; i++) {
-                    board = document.createElement("button");
-                    board.id = index + "btn" + (i + j * 3);
-                    board.i = i; board.j = j;
-                    board.addEventListener("click", this.btnHandle, false);
-                    board.appendChild(document.createTextNode(""));
-                    div.appendChild(board);
-                    if (v) board.className = "small-button"
-                    else board.className = "small-empty";
-                    v = !v;
+            console.log('div->', div);
+            console.log('target->', target);
+            if (target !== null) {
+                target.appendChild(div);
+                for (let j = 0; j < 3; j++) {
+                    for (let i = 0; i < 3; i++) {
+                        board = document.createElement("button");
+                        board.id = index + "btn" + (i + j * 3);
+                        board.i = i; board.j = j;
+                        board.addEventListener("click", this.btnHandle, false);
+                        board.appendChild(document.createTextNode(""));
+                        div.appendChild(board);
+                        if (v) board.className = "small-button"
+                        else board.className = "small-empty";
+                        v = !v;
+                    }
                 }
             }
             this.updateBtns(index)
