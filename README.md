@@ -1,6 +1,17 @@
 # Hexapawn
 
-replace me...
+Hexapawn is designed to show machine learning at a very basic level. The AI computer will get progressively more difficult to beat after learning from its mistakes. To win the game do ONE of the following:
+1.	Get one of your pawns to the other side of the board.
+2.	Remove all the opponents pawns from the board.
+3.	Force a draw on your turn to move.
+
+### Rules
+
+1.	You are white and the computer is black. You get the first move.
+2.	Your pawn can move forward one square if the square is empty.
+3.	Your pawn can move diagonally one square to attack a black pawn.
+4.	Click the pawn you want to move, then click the destination square.
+5.	The computer will move automatically and it will be your turn again.
 
 Heroku Demo:  https://shrouded-ravine-60693.herokuapp.com/
 
@@ -20,7 +31,6 @@ Heroku Demo:  https://shrouded-ravine-60693.herokuapp.com/
 
 1. Barry Flickinger - Back-end
 2. Van Patterson - Front-end
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
