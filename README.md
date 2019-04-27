@@ -15,6 +15,8 @@ Hexapawn is designed to show machine learning at a very basic level. The AI comp
 
 Heroku Demo:  https://shrouded-ravine-60693.herokuapp.com/
 
+![Application Examples](screenshot.PNG?raw=true)
+
 ## Technologies Used
 
 1. React.js
