@@ -107,10 +107,3 @@ svg {
   width: 100%;
   font-size: 3vh
 }
-
-svg {
-  height: 20vh;
-  width: 20vh;
-  z-index: 2;
-  position: absolute;
-}
