@@ -7,6 +7,7 @@ import {
 } from "../../actions/gameActions";
 import "./style.css";
 
+
 class Memorytracker extends Component {
 
     drawTracker = (index) => {
@@ -52,7 +53,7 @@ class Memorytracker extends Component {
                 b.innerHTML = boardArray[j] === "B" ? '<img class="pawnblack" src="pawnblack.png">' : boardArray[j] === "W" ? '<img class="pawnwhite" src="pawnwhite.png">' : " ";
             }
         }
-        // this.drawMoves(index);
+        this.drawMoves(index);
     };
 
     drawMoves = (index) => {
@@ -94,29 +95,29 @@ class Memorytracker extends Component {
 
         if (!document.getElementById("svg" + index)) {
             var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"), target = document.getElementById("board" + index);
-            var defs = document.createElement('defs');
+            var defs = document.createElementNS("http://www.w3.org/2000/svg", 'defs');
 
-            let markerblue = document.createElement('marker');
+            let markerblue = document.createElementNS("http://www.w3.org/2000/svg", 'marker');
             markerblue.setAttribute('id' , 'arrowblue');
             markerblue.setAttribute('markerWidth' , '13');
             markerblue.setAttribute('markerHeight' , '13');
             markerblue.setAttribute('refx' , '2');
             markerblue.setAttribute('refy' , '6');
             markerblue.setAttribute('orient' , 'auto');
-            let pathblue = document.createElement('path');
+            let pathblue = document.createElementNS("http://www.w3.org/2000/svg", 'path');
             pathblue.setAttribute('d', 'M2,1 L2,10 L10,6 L2,2');
             pathblue.setAttribute('style', 'fill:lightseagreen;');
             markerblue.appendChild(pathblue);
             defs.appendChild(markerblue);
     
-            let markerred = document.createElement('marker');
+            let markerred = document.createElementNS("http://www.w3.org/2000/svg", 'marker');
             markerred.setAttribute('id' , 'arrowred');
             markerred.setAttribute('markerWidth' , '13');
             markerred.setAttribute('markerHeight' , '13');
             markerred.setAttribute('refx' , '2');
             markerred.setAttribute('refy' , '6');
             markerred.setAttribute('orient' , 'auto');
-            let pathred = document.createElement('path');
+            let pathred = document.createElementNS("http://www.w3.org/2000/svg", 'path');
             pathred.setAttribute('d', 'M2,1 L2,10 L10,6 L2,2');
             pathred.setAttribute('style', 'fill:red;');
             markerred.appendChild(pathred);
@@ -165,7 +166,7 @@ class Memorytracker extends Component {
             }
 
             //sets the "d" property of the path object (each path is an arrow)
-            let path = document.createElement('path');
+            let path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
             arrowPath = `M${arrowStartX},${arrowStartY} L${arrowEndX},${arrowEndY}`;
             path.setAttribute('d', arrowPath);
             path.setAttribute('style', arrowBlue);

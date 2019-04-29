@@ -17,7 +17,8 @@ svg {
   height: 20vh;
   width: 20vh;
   z-index: 2;
-  position: absolute
+  position: absolute;
+  overflow: visible;
 }
 
 .small-board {
