@@ -14,10 +14,6 @@ class Memorytracker extends Component {
         this.createBtns(index);
     }
 
-    drawLine = () => {
-        let line = document.createElement("svg").setAttribute("width: 300", "height=100")
-    }
-
     createBtns = (index) => {
         if (!document.getElementById('board' + index)) {
             let board, div = document.createElement("div"), v = false, target = document.getElementById("memory-tracker");
@@ -90,8 +86,8 @@ class Memorytracker extends Component {
         //create svg append to memory tracker div
         let arrowEndX, arrowEndY;
         let arrowStartX, arrowStartY, arrowPath;
-        let arrowBlue = "stroke:lightseagreen; stroke-width: 4px; fill: none; marker-end: url(#arrowblue)";
-        let arrowRed = "stroke:red; stroke-width: 4px; fill: none; marker-end: url(#arrowred)";
+        let arrowBlue = "stroke:lightseagreen; stroke-width: 8px; fill: none; ";
+        let arrowRed = "stroke:red; stroke-width: 8px; fill: none;";
 
         if (!document.getElementById("svg" + index)) {
             var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"), target = document.getElementById("board" + index);
@@ -208,7 +204,7 @@ class Memorytracker extends Component {
             }
 
             //sets the "d" property of the path object (each path is an arrow)
-            let path = document.createElement('path');
+            let path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
             arrowPath = `M${arrowStartX},${arrowStartY} L${arrowEndX},${arrowEndY}`;
             path.setAttribute('d', arrowPath);
             path.setAttribute('style', arrowRed);
