@@ -22,8 +22,6 @@ class Memorytracker extends Component {
             let board, div = document.createElement("div"), v = false, target = document.getElementById("memory-tracker");
             div.className += "small-board";
             div.id = index;
-            // console.log('div->', div);
-            // console.log('target->', target);
             if (target !== null) {
                 target.appendChild(div);
                 for (let j = 0; j < 3; j++) {
@@ -45,25 +43,55 @@ class Memorytracker extends Component {
     }
 
     updateBtns = (index) => {
-        let board = this.props.game.memory[index].board;
-        let remainingMoves = this.props.game.memory[index].moves;
-        console.log('Current board ->', board);
-        console.log('Current moves ->', remainingMoves);
-        this.props.getFullMemory(this.props.game.memory[index]);
-        console.log('Fullmoves board ->', this.props.game.board);
-        console.log('Fullmove moves', this.props.game.moves);
-        let boardArray = board.split("");
+        let playerBoard = this.props.game.memory[index].board;
+        let boardArray = playerBoard.split("");
         for (let j = 0; j < boardArray.length; j++) {
             let b = document.getElementById(index + "btn" + j);
             if (b !== null) {
                 b.innerHTML = boardArray[j] === "B" ? '<img class="pawnblack" src="pawnblack.png">' : boardArray[j] === "W" ? '<img class="pawnwhite" src="pawnwhite.png">' : " ";
             }
         }
+        this.drawMoves(index)
     };
+
+    drawMoves = (index) => {
+        let playerBoard = this.props.game.memory[index].board;
+        let playerMoves = this.props.game.memory[index].moves;
+        let allBoards = this.props.game.allboards;
+        let matchingBoardMoves = [];
+        for (let x = 0; x < allBoards.length; x++) {
+            if (allBoards[x].board === playerBoard) {
+                matchingBoardMoves = allBoards[x].moves;
+                break;
+            }
+        }
+        let redMoves = [];
+        let blueMoves = [];
+        var color = "red";
+        var bluemove = '';
+        for (let y = 0; y < matchingBoardMoves.length; y++) {
+            let mBf = matchingBoardMoves[y].f;
+            let mBt = matchingBoardMoves[y].t;
+            for (let z = 0; z < playerMoves.length; z++) {
+                if ((playerMoves[z].f === mBf) && (playerMoves[z].t === mBt)) {
+                    color = "blue";
+                    bluemove = "{ 'f': mBf, 't': mBt }";
+                } 
+            }
+            if (color === 'blue') {
+                blueMoves.push({ 'f': mBf, 't': mBt });
+                color = 'red';
+            } else {
+                redMoves.push({ 'f': mBf, 't': mBt});
+            }
+        }
+        //create svg append to memory tracker div
+    }
 
     render() {
         return (
             <div id="memory-tracker">
+                {/* && isArray(this.props.game.allboards) */}
                 {isArray(this.props.game.memory) ? this.props.game.memory.map((memory, index) => (
                     this.drawTracker(index)
                 )) : ""}

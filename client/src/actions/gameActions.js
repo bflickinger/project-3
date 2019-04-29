@@ -119,21 +119,20 @@ export function postBoard(board) {
   }
 }
 
-export function getFullMemory(memory) {
+export function getFullMemory() {
   return (dispatch) => {
     // console.log('Board ->', memory);
-    axios.get('/api/users/boards/'+ memory.board)
+    axios.get('/api/users/boards/')
       .then((res) => {
         dispatch(setBoard(res.data))
-         console.log('Full moves ->', res.data);
-         return res.data; 
+        //  console.log('Full moves ->', res.data);
         })
       .catch((err) => { return (err) })
   }
 }
 
 export function setBoard(data) {
-  console.log('setBoard fired', data);
+  // console.log('setBoard fired', data);
   return {
     type: SET_BOARD,
     payload: data

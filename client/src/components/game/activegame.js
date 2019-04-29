@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Modal, Button } from "react-materialize";
 import { isArray } from "util";
 import {
-    incrementComputer, incrementPlayer, postMemory, setMemory, getMemory, getScore, postScore, postBoard
+    incrementComputer, incrementPlayer, postMemory, setMemory, getMemory, getScore, postScore, postBoard, getFullMemory
 } from "../../actions/gameActions";
 import Scoreboard from "./scoreboard";
 
@@ -36,6 +36,7 @@ let fadeIn =() => {
 class Activegame extends Component {
  
     componentDidMount = () => {
+        this.props.getFullMemory();
         let userId = this.props.auth.user.id;
         this.props.getMemory(userId);
         this.props.getScore(userId);
@@ -90,6 +91,7 @@ class Activegame extends Component {
             this.props.postMemory(id, localMemory);
             this.props.setMemory(localMemory);
             this.props.postBoard(localMemory.slice(-1)[0]);
+            this.props.getFullMemory();
         }
         this.updateBtns();
         return -1;
@@ -306,6 +308,6 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps, {
-         incrementPlayer, incrementComputer, postMemory, setMemory, getMemory, getScore, postScore, postBoard
+         incrementPlayer, incrementComputer, postMemory, setMemory, getMemory, getScore, postScore, postBoard, getFullMemory
         }
 )(Activegame);

@@ -6,8 +6,7 @@ const initialState = {
   memory: {},
   computer: 0,
   player: 0,
-  board: "",
-  moves: []
+  allboards: {}
 };
 
 export default (state = initialState, action) => {
@@ -45,11 +44,9 @@ export default (state = initialState, action) => {
         computer: 0
       };
     case SET_BOARD:
-    // console.log('Set Board Reducer fired');
       return {
         ...state,
-        board: action.payload.board,
-        moves: action.payload.moves
+        allboards: action.payload
       }
     default:
       return state;

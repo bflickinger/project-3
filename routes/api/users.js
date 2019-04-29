@@ -211,11 +211,8 @@ router.post("/boards/", (req, res) => {
   });
 });
 
-router.get("/boards/:id", async (req, res) => {
-  console.log(".GET data -> ", req.params.id);
-  Board.findOne({
-    board: req.params.id
-  }).then(data => {
+router.get("/boards/", async (req, res) => {
+  Board.find({}).then(data => {
     console.log('data', data);
     return res.json(data);
   })
