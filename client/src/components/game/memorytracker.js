@@ -97,31 +97,31 @@ class Memorytracker extends Component {
             var defs = document.createElement('defs');
 
             let markerblue = document.createElement('marker');
-            markerblue.setAttribute('id' , 'arrowblue');
-            markerblue.setAttribute('markerWidth' , '13');
-            markerblue.setAttribute('markerHeight' , '13');
-            markerblue.setAttribute('refx' , '2');
-            markerblue.setAttribute('refy' , '6');
-            markerblue.setAttribute('orient' , 'auto');
+            markerblue.setAttribute('id', 'arrowblue');
+            markerblue.setAttribute('markerWidth', '13');
+            markerblue.setAttribute('markerHeight', '13');
+            markerblue.setAttribute('refx', '2');
+            markerblue.setAttribute('refy', '6');
+            markerblue.setAttribute('orient', 'auto');
             let pathblue = document.createElement('path');
             pathblue.setAttribute('d', 'M2,1 L2,10 L10,6 L2,2');
             pathblue.setAttribute('style', 'fill:lightseagreen;');
             markerblue.appendChild(pathblue);
             defs.appendChild(markerblue);
-    
+
             let markerred = document.createElement('marker');
-            markerred.setAttribute('id' , 'arrowred');
-            markerred.setAttribute('markerWidth' , '13');
-            markerred.setAttribute('markerHeight' , '13');
-            markerred.setAttribute('refx' , '2');
-            markerred.setAttribute('refy' , '6');
-            markerred.setAttribute('orient' , 'auto');
+            markerred.setAttribute('id', 'arrowred');
+            markerred.setAttribute('markerWidth', '13');
+            markerred.setAttribute('markerHeight', '13');
+            markerred.setAttribute('refx', '2');
+            markerred.setAttribute('refy', '6');
+            markerred.setAttribute('orient', 'auto');
             let pathred = document.createElement('path');
             pathred.setAttribute('d', 'M2,1 L2,10 L10,6 L2,2');
             pathred.setAttribute('style', 'fill:red;');
             markerred.appendChild(pathred);
             defs.appendChild(markerred);
-            
+
 
             defs.setAttribute('id', 'defs' + index);
             svg.setAttribute('viewBox', '0 0 330 330');
@@ -148,19 +148,19 @@ class Memorytracker extends Component {
                 arrowEndY = 250;
             }
 
-            if (sourceButton == 0 || sourceButton == 3 || sourceButton == 6) {
+            if (sourceButton === 0 || sourceButton === 3 || sourceButton === 6) {
                 arrowStartX = 50;
-            } else if (sourceButton == 1 || sourceButton == 4 || sourceButton == 7) {
+            } else if (sourceButton === 1 || sourceButton === 4 || sourceButton === 7) {
                 arrowStartX = 150;
-            } else if (sourceButton == 2 || sourceButton == 5 || sourceButton == 8) {
+            } else if (sourceButton === 2 || sourceButton === 5 || sourceButton === 8) {
                 arrowStartX = 250;
             }
 
-            if (destinationButton == 3 || destinationButton == 6) {
+            if (destinationButton === 3 || destinationButton === 6) {
                 arrowEndX = 50;
-            } else if (destinationButton == 4 || destinationButton == 7) {
+            } else if (destinationButton === 4 || destinationButton === 7) {
                 arrowEndX = 150;
-            } else if (destinationButton == 5 || destinationButton == 8) {
+            } else if (destinationButton === 5 || destinationButton === 8) {
                 arrowEndX = 250;
             }
 
@@ -190,19 +190,19 @@ class Memorytracker extends Component {
                 arrowEndY = 250;
             }
 
-            if (sourceButton == 0 || sourceButton == 3 || sourceButton == 6) {
+            if (sourceButton === 0 || sourceButton === 3 || sourceButton === 6) {
                 arrowStartX = 50;
-            } else if (sourceButton == 1 || sourceButton == 4 || sourceButton == 7) {
+            } else if (sourceButton === 1 || sourceButton === 4 || sourceButton === 7) {
                 arrowStartX = 150;
-            } else if (sourceButton == 2 || sourceButton == 5 || sourceButton == 8) {
+            } else if (sourceButton === 2 || sourceButton === 5 || sourceButton === 8) {
                 arrowStartX = 250;
             }
 
-            if (destinationButton == 3 || destinationButton == 6) {
+            if (destinationButton === 3 || destinationButton === 6) {
                 arrowEndX = 50;
-            } else if (destinationButton == 4 || destinationButton == 7) {
+            } else if (destinationButton === 4 || destinationButton === 7) {
                 arrowEndX = 150;
-            } else if (destinationButton == 5 || destinationButton == 8) {
+            } else if (destinationButton === 5 || destinationButton === 8) {
                 arrowEndX = 250;
             }
 
