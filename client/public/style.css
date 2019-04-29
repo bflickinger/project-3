@@ -17,14 +17,14 @@ svg {
   height: 20vh;
   width: 20vh;
   z-index: 2;
-  position: absolute;
+  position: absolute
 }
 
 .small-board {
   padding: 0;
   margin: auto;
   width: 20vh;
-  height: 20vh
+  height: 20vh;
 }
 
 .button,
@@ -106,11 +106,4 @@ svg {
 .long {
   width: 100%;
   font-size: 3vh
-}
-
-svg {
-  height: 20vh;
-  width: 20vh;
-  z-index: 2;
-  position: absolute;
 }

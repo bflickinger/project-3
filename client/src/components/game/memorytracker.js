@@ -18,10 +18,10 @@ class Memorytracker extends Component {
     }
 
     createBtns = (index) => {
-        if (!document.getElementById(index)) {
+        if (!document.getElementById('board' + index)) {
             let board, div = document.createElement("div"), v = false, target = document.getElementById("memory-tracker");
             div.className += "small-board";
-            div.id = index;
+            div.id = 'board' + index;
             if (target !== null) {
                 target.appendChild(div);
                 for (let j = 0; j < 3; j++) {
@@ -38,7 +38,8 @@ class Memorytracker extends Component {
                     }
                 }
             }
-            this.updateBtns(index)
+            this.updateBtns(index);
+
         }
     }
 
@@ -51,7 +52,7 @@ class Memorytracker extends Component {
                 b.innerHTML = boardArray[j] === "B" ? '<img class="pawnblack" src="pawnblack.png">' : boardArray[j] === "W" ? '<img class="pawnwhite" src="pawnwhite.png">' : " ";
             }
         }
-        this.drawMoves(index)
+        // this.drawMoves(index);
     };
 
     drawMoves = (index) => {
@@ -76,16 +77,142 @@ class Memorytracker extends Component {
                 if ((playerMoves[z].f === mBf) && (playerMoves[z].t === mBt)) {
                     color = "blue";
                     bluemove = "{ 'f': mBf, 't': mBt }";
-                } 
+                }
             }
             if (color === 'blue') {
                 blueMoves.push({ 'f': mBf, 't': mBt });
                 color = 'red';
             } else {
-                redMoves.push({ 'f': mBf, 't': mBt});
+                redMoves.push({ 'f': mBf, 't': mBt });
             }
         }
         //create svg append to memory tracker div
+        let arrowEndX, arrowEndY;
+        let arrowStartX, arrowStartY, arrowPath;
+        let arrowBlue = "stroke:lightseagreen; stroke-width: 4px; fill: none; marker-end: url(#arrowblue)";
+        let arrowRed = "stroke:red; stroke-width: 4px; fill: none; marker-end: url(#arrowred)";
+
+        if (!document.getElementById("svg" + index)) {
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"), target = document.getElementById("board" + index);
+            var defs = document.createElement('defs');
+
+            let markerblue = document.createElement('marker');
+            markerblue.setAttribute('id' , 'arrowblue');
+            markerblue.setAttribute('markerWidth' , '13');
+            markerblue.setAttribute('markerHeight' , '13');
+            markerblue.setAttribute('refx' , '2');
+            markerblue.setAttribute('refy' , '6');
+            markerblue.setAttribute('orient' , 'auto');
+            let pathblue = document.createElement('path');
+            pathblue.setAttribute('d', 'M2,1 L2,10 L10,6 L2,2');
+            pathblue.setAttribute('style', 'fill:lightseagreen;');
+            markerblue.appendChild(pathblue);
+            defs.appendChild(markerblue);
+    
+            let markerred = document.createElement('marker');
+            markerred.setAttribute('id' , 'arrowred');
+            markerred.setAttribute('markerWidth' , '13');
+            markerred.setAttribute('markerHeight' , '13');
+            markerred.setAttribute('refx' , '2');
+            markerred.setAttribute('refy' , '6');
+            markerred.setAttribute('orient' , 'auto');
+            let pathred = document.createElement('path');
+            pathred.setAttribute('d', 'M2,1 L2,10 L10,6 L2,2');
+            pathred.setAttribute('style', 'fill:red;');
+            markerred.appendChild(pathred);
+            defs.appendChild(markerred);
+            
+
+            defs.setAttribute('id', 'defs' + index);
+            svg.setAttribute('viewBox', '0 0 330 330');
+            svg.setAttribute('id', 'svg' + index);
+            svg.appendChild(defs);
+            target.prepend(svg);
+        }
+
+        for (let x = 0; x < blueMoves.length; x++) {
+            let sourceButton = blueMoves[x].f, destinationButton = blueMoves[x].t;
+            let svg = document.getElementById('svg' + index);
+
+            console.log('blue source ->' + sourceButton + ' , destination ->' + destinationButton);
+            // Logic for drawing arrows via SVG vectors
+            if (sourceButton <= 2) {
+                arrowStartY = 50;
+            } else {
+                arrowStartY = 150;
+            }
+
+            if (destinationButton <= 5) {
+                arrowEndY = 150;
+            } else {
+                arrowEndY = 250;
+            }
+
+            if (sourceButton == 0 || sourceButton == 3 || sourceButton == 6) {
+                arrowStartX = 50;
+            } else if (sourceButton == 1 || sourceButton == 4 || sourceButton == 7) {
+                arrowStartX = 150;
+            } else if (sourceButton == 2 || sourceButton == 5 || sourceButton == 8) {
+                arrowStartX = 250;
+            }
+
+            if (destinationButton == 3 || destinationButton == 6) {
+                arrowEndX = 50;
+            } else if (destinationButton == 4 || destinationButton == 7) {
+                arrowEndX = 150;
+            } else if (destinationButton == 5 || destinationButton == 8) {
+                arrowEndX = 250;
+            }
+
+            //sets the "d" property of the path object (each path is an arrow)
+            let path = document.createElement('path');
+            arrowPath = `M${arrowStartX},${arrowStartY} L${arrowEndX},${arrowEndY}`;
+            path.setAttribute('d', arrowPath);
+            path.setAttribute('style', arrowBlue);
+            svg.appendChild(path);
+        }
+
+        for (let x = 0; x < redMoves.length; x++) {
+            let sourceButton = redMoves[x].f, destinationButton = redMoves[x].t;
+            let svg = document.getElementById('svg' + index);
+
+            console.log('red source ->' + sourceButton + ' , destination ->' + destinationButton);
+            // Logic for drawing arrows via SVG vectors
+            if (sourceButton <= 2) {
+                arrowStartY = 50;
+            } else {
+                arrowStartY = 150;
+            }
+
+            if (destinationButton <= 5) {
+                arrowEndY = 150;
+            } else {
+                arrowEndY = 250;
+            }
+
+            if (sourceButton == 0 || sourceButton == 3 || sourceButton == 6) {
+                arrowStartX = 50;
+            } else if (sourceButton == 1 || sourceButton == 4 || sourceButton == 7) {
+                arrowStartX = 150;
+            } else if (sourceButton == 2 || sourceButton == 5 || sourceButton == 8) {
+                arrowStartX = 250;
+            }
+
+            if (destinationButton == 3 || destinationButton == 6) {
+                arrowEndX = 50;
+            } else if (destinationButton == 4 || destinationButton == 7) {
+                arrowEndX = 150;
+            } else if (destinationButton == 5 || destinationButton == 8) {
+                arrowEndX = 250;
+            }
+
+            //sets the "d" property of the path object (each path is an arrow)
+            let path = document.createElement('path');
+            arrowPath = `M${arrowStartX},${arrowStartY} L${arrowEndX},${arrowEndY}`;
+            path.setAttribute('d', arrowPath);
+            path.setAttribute('style', arrowRed);
+            svg.appendChild(path);
+        }
     }
 
     render() {
